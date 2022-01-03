@@ -2,6 +2,7 @@
     import ChevronLeft24 from "carbon-icons-svelte/lib/ChevronLeft24";
     import Add24 from "carbon-icons-svelte/lib/Add24";
     import OverflowMenuHorizontal24 from "carbon-icons-svelte/lib/OverflowMenuHorizontal24";
+import ListItemTile from "./list-item-tile.svelte";
 
     export let title = "School";
 </script>
@@ -31,6 +32,10 @@
         <br>
         <span style="font-weight: 500;">Tasks - 8</span>
         <br>
+        <br>
+        <ListItemTile/>
+        <ListItemTile completed = {true} title = "Return Books To library"/>
+        <ListItemTile completed = {false} title = "Group Project"/>
     </div>
 </div>
 

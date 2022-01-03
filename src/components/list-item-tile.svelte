@@ -15,7 +15,7 @@
         {/if}
     </div>
     &nbsp; &nbsp;
-    <div class="title">
+    <div class="title" class:completed-title-color={completed}>
         {title}
         <div class="crossthrough" class:crossthrough-completed={completed} />
     </div>
@@ -32,6 +32,7 @@
         font-size: 20px;
         font-weight: 500;
         margin-bottom: 20px;
+        user-select: none;
     }
     .leading {
         display: flex;
@@ -50,6 +51,7 @@
     .title {
         position: relative;
         color: white;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     .crossthrough {
         width: 0%;
@@ -57,9 +59,14 @@
         background-color: white;
         position: absolute;
         top: 12.5px;
+        right: 0;
         transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     .crossthrough-completed {
         width: 100%;
+        left: 0;
+    }
+    .completed-title-color{
+        color: #b6b6b9;
     }
 </style>

@@ -3,5 +3,7 @@
 </script>
 
 <main>
-	<Header />
+	<Header>
+		
+	</Header>
 </main>

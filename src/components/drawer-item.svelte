@@ -4,16 +4,15 @@
 
     export let title: string;
     export let color: "primary" | "secondary" = "primary";
-    const SLOTS = $$props;
-    console.log(SLOTS);
+    const PROPS = $$props;
 </script>
 
-<div class="drawer-item">
+<div class="drawer-item" on:click>
     <div
         class="icon"
         style="background-color: {color == 'primary' ? '#fc76a1' : '#70c4bf'};"
     >
-        {#if SLOTS.$$slots}
+        {#if PROPS.$$slots}
             <slot />
         {:else}
             <Notebook24 />

@@ -1,15 +1,46 @@
-<script lang="ts"></script>
+<script lang="ts">
+    import { addListModal } from "../stores/stores";
+
+    let newTitle: string = "";
+    let message: string = "";
+    let maxTitleLimit = 50;
+
+    $: isValid = () => {
+        const trimmed = newTitle.trim();
+        if (trimmed.length == 0) {
+            message = "Enter something...";
+            return false;
+        }
+        if (trimmed.length > maxTitleLimit) {
+            message = `'Trim it down to 50 characters or less' - Saitama`;
+            return false;
+        }
+        return true;
+    };
+
+    const closeModal = () => {
+        addListModal.set(null);
+    };
+</script>
 
 <div class="modal">
     <div class="header">Create New List</div>
     <div class="modal-content">
-        <input type="text" placeholder="Enter New List Title" />
+        <input
+            type="text"
+            placeholder="Enter New List Title"
+            bind:value={newTitle}
+        />
     </div>
-
+    <div class="validation-message">
+        {#if !isValid() && newTitle.length > 0}
+            {message}
+        {/if}
+    </div>
     <div class="modal-buttons">
-        <button> Close </button>
+        <button on:click={closeModal}> Close </button>
         &nbsp; &nbsp;
-        <button class="primary-button"> Save </button>
+        <button class="primary-button" disabled={!isValid()}> Save </button>
     </div>
 </div>
 
@@ -39,7 +70,7 @@
         padding-right: 20px;
         padding-bottom: 10px;
     }
-    input{
+    input {
         border: none;
         outline: none;
         background-color: transparent;
@@ -55,5 +86,9 @@
     }
     .primary-button {
         background-color: #fc76a1;
+    }
+    .validation-message {
+        padding: 12px 16px;
+        color: goldenrod;
     }
 </style>

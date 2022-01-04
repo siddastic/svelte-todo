@@ -1,19 +1,26 @@
 <script lang="ts">
     import Add24 from "carbon-icons-svelte/lib/Add24";
+    import { bind } from "svelte-simple-modal";
     import { fade } from "svelte/transition";
+    import { addListModal } from "../stores/stores";
+    import CreateListModal from "./create_list_modal.svelte";
     import DrawerItem from "./drawer-item.svelte";
+
+    const showAddModal = () =>
+        // @ts-ignore
+        addListModal.set(bind(CreateListModal));
 </script>
 
 <div class="drawer" transition:fade>
     <div>
-        <DrawerItem title="Short Term Goals" color="primary"/>
+        <DrawerItem title="Short Term Goals" color="primary" />
         <DrawerItem title="Long Term Goals" color="secondary" />
         <DrawerItem title="College" color="primary" />
         <DrawerItem title="JS IDE" color="secondary" />
     </div>
     <div>
         <hr color="#b6b6b9" size=".99" />
-        <DrawerItem title="Create New" color="primary">
+        <DrawerItem title="Create New" color="primary" on:click = {showAddModal}>
             <Add24 />
         </DrawerItem>
     </div>

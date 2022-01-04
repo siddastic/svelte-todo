@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { addListModal } from "../stores/stores";
+    import { addListModal, MainDataStore } from "../stores/stores";
+    import { v4 as uuidv4 } from "uuid";
+    import type { TodoList } from "../interfaces/global";
 
     let newTitle: string = "";
     let message: string = "";
@@ -21,6 +23,23 @@
     const closeModal = () => {
         addListModal.set(null);
     };
+
+    const saveTitle = () => {
+        closeModal();
+        MainDataStore.update((data) => {
+            return {
+                ...data,
+                titles: [
+                    ...data.titles,
+                    {
+                        id: uuidv4(),
+                        millisecondsSinceEpoch: Date.now(),
+                        title: newTitle,
+                    },
+                ],
+            };
+        });
+    };
 </script>
 
 <div class="modal">
@@ -40,7 +59,7 @@
     <div class="modal-buttons">
         <button on:click={closeModal}> Close </button>
         &nbsp; &nbsp;
-        <button class="primary-button" disabled={!isValid()}> Save </button>
+        <button class="primary-button" disabled={!isValid()} on:click={saveTitle}> Save </button>
     </div>
 </div>
 

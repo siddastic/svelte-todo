@@ -8,6 +8,7 @@
 
     const handleTileSelect = () => {
         completed = !completed;
+        dispatch('change-state',completed);
     };
 </script>
 

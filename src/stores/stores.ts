@@ -7,7 +7,7 @@ export const MainDataStore = writable<TodoList>({
     appVersion: "0.0.1",
     exportDataVersion: 1,
     titles: [
-
+        
     ],
     items: [
         

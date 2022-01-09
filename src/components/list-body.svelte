@@ -12,6 +12,19 @@
         (i) => i.key == $OpenedListId
     );
     $: items = filteredItem.length > 0 ? filteredItem[0].list : [];
+    const changeTaskState = (id,newState) => {
+        MainDataStore.update((data) => {
+            const mainData = data;
+            const oldItems = mainData.items;
+            const currentItem = mainData.items.filter((e) => {
+                return e.key == $OpenedListId;
+            })[0];
+            let itemIndex = currentItem.list.indexOf(currentItem.list.filter(e=>e.id==id)[0]);
+            currentItem.list[itemIndex].completed = newState;
+            const newData = { ...mainData, items: [...oldItems, currentItem] };
+            return newData;
+        });
+    }
 </script>
 
 <div class="list-body">
@@ -37,7 +50,9 @@
             <br />
             <br />
             {#each items as item (item.id)}
-                <ListItemTile completed={item.completed} title={item.title} />
+                <ListItemTile completed={item.completed} title={item.title} on:change-state = {(newState)=>{
+                    changeTaskState(item.id,newState.detail);
+                }}/>
             {/each}
         </div>
     {/if}

@@ -8,7 +8,7 @@
     $: listId = $OpenedListId;
     $: isAnyListOpen = typeof listId == "number";
     $: selectedList = $MainDataStore.titles.filter((e) => e.id == listId)[0];
-    let items = $MainDataStore.items.filter((i) => i.key == $OpenedListId)[0]
+    $: items = $MainDataStore.items.filter((i) => i.key == $OpenedListId)[0]
         .list;
 </script>
 
@@ -30,7 +30,7 @@
         <AddTaskTile />
         <br />
         <br />
-        <span style="font-weight: 500;">Tasks - 8</span>
+        <span style="font-weight: 500;">Tasks - {items.length}</span>
         <br />
         <br />
         {#each items as item (item.id)}

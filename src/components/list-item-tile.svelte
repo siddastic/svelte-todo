@@ -1,7 +1,10 @@
 <script lang="ts">
     import Checkmark24 from "carbon-icons-svelte/lib/Checkmark24";
+    import { createEventDispatcher } from "svelte";
     export let completed = false;
-    export let title = 'Finish Collaborative Essay';
+    export let title = "Finish Collaborative Essay";
+
+    const dispatch = createEventDispatcher();
 
     const handleTileSelect = () => {
         completed = !completed;
@@ -66,7 +69,7 @@
         width: 100%;
         left: 0;
     }
-    .completed-title-color{
+    .completed-title-color {
         color: #b6b6b9;
     }
 </style>

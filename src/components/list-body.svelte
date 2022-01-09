@@ -3,8 +3,13 @@
     import OverflowMenuHorizontal24 from "carbon-icons-svelte/lib/OverflowMenuHorizontal24";
     import ListItemTile from "./list-item-tile.svelte";
     import AddTaskTile from "./add_task_tile.svelte";
+    import { MainDataStore, OpenedListId } from "../stores/stores";
 
-    export let title = "School";
+    $: listId = $OpenedListId;
+    $: isAnyListOpen = typeof listId == "number";
+    $: selectedList = $MainDataStore.titles.filter((e) => e.id == listId)[0];
+    let items = $MainDataStore.items.filter((i) => i.key == $OpenedListId)[0]
+        .list;
 </script>
 
 <div class="list-body">
@@ -15,7 +20,7 @@
                     <ChevronLeft24 />
                 </div>
                 &nbsp; &nbsp;
-                {title}
+                {selectedList.title}
             </div>
             <div class="options">
                 <OverflowMenuHorizontal24 />
@@ -28,9 +33,9 @@
         <span style="font-weight: 500;">Tasks - 8</span>
         <br />
         <br />
-        <ListItemTile />
-        <ListItemTile completed={true} title="Return Books To library" />
-        <ListItemTile completed={false} title="Group Project" />
+        {#each items as item (item.id)}
+            <ListItemTile completed={item.completed} title={item.title} />
+        {/each}
     </div>
 </div>
 

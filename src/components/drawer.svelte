@@ -2,21 +2,37 @@
     import Add24 from "carbon-icons-svelte/lib/Add24";
     import { bind } from "svelte-simple-modal";
     import { fade } from "svelte/transition";
-    import { addListModal, MainDataStore } from "../stores/stores";
+    import {
+        addListModal,
+        MainDataStore,
+        OpenedListId,
+    } from "../stores/stores";
     import CreateListModal from "./create_list_modal.svelte";
     import DrawerItem from "./drawer-item.svelte";
 
     const showAddModal = () =>
         // @ts-ignore
         addListModal.set(bind(CreateListModal));
+
+    let openedTileId = $OpenedListId;
+
+    const openTodo = (id) => {
+        console.log(id);
+        OpenedListId.update(() => {
+            return Number(id);
+        });
+        openedTileId = id;
+    };
 </script>
 
 <div class="drawer" transition:fade>
     <div>
         {#each $MainDataStore.titles as li, index (li.id)}
             <DrawerItem
+                isOpen={openedTileId == li.id}
                 title={li.title}
                 color={index % 2 == 0 ? "primary" : "secondary"}
+                on:click={openTodo.bind(null, li.id)}
             />
         {/each}
     </div>

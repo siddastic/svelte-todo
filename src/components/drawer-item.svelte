@@ -1,13 +1,13 @@
 <script lang="ts">
     import Notebook24 from "carbon-icons-svelte/lib/Notebook24";
 
-
     export let title: string;
     export let color: "primary" | "secondary" = "primary";
+    export let isOpen: boolean = false;
     const PROPS = $$props;
 </script>
 
-<div class="drawer-item" on:click>
+<div class="drawer-item" on:click class:open={isOpen}>
     <div
         class="icon"
         style="background-color: {color == 'primary' ? '#fc76a1' : '#70c4bf'};"
@@ -39,5 +39,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .open,.open:hover {
+        background-color: #17181f;
     }
 </style>

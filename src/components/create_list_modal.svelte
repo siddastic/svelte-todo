@@ -27,14 +27,22 @@
     const saveTitle = () => {
         closeModal();
         MainDataStore.update((data) => {
+            let id = uuidv4();
             return {
                 ...data,
                 titles: [
                     ...data.titles,
                     {
-                        id: uuidv4(),
+                        id,
                         millisecondsSinceEpoch: Date.now(),
                         title: newTitle,
+                    },
+                ],
+                items: [
+                    ...data.items,
+                    {
+                        key: id,
+                        list: [],
                     },
                 ],
             };
@@ -59,7 +67,13 @@
     <div class="modal-buttons">
         <button on:click={closeModal}> Close </button>
         &nbsp; &nbsp;
-        <button class="primary-button" disabled={!isValid()} on:click={saveTitle}> Save </button>
+        <button
+            class="primary-button"
+            disabled={!isValid()}
+            on:click={saveTitle}
+        >
+            Save
+        </button>
     </div>
 </div>
 

@@ -19,8 +19,9 @@
     const openTodo = (id) => {
         console.log(id);
         OpenedListId.update(() => {
-            return Number(id);
+            return id;
         });
+        console.log($MainDataStore);
         openedTileId = id;
     };
 </script>

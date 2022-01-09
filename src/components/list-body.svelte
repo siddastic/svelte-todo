@@ -6,37 +6,41 @@
     import { MainDataStore, OpenedListId } from "../stores/stores";
 
     $: listId = $OpenedListId;
-    $: isAnyListOpen = typeof listId == "number";
+    $: isAnyListOpen = typeof listId == "number" || typeof listId == "string";
     $: selectedList = $MainDataStore.titles.filter((e) => e.id == listId)[0];
-    $: items = $MainDataStore.items.filter((i) => i.key == $OpenedListId)[0]
-        .list;
+    $: filteredItem = $MainDataStore.items.filter(
+        (i) => i.key == $OpenedListId
+    );
+    $: items = filteredItem.length > 0 ? filteredItem[0].list : [];
 </script>
 
 <div class="list-body">
-    <div class="content">
-        <div class="header row">
-            <div class="title row">
-                <div class="icon">
-                    <ChevronLeft24 />
+    {#if isAnyListOpen}
+        <div class="content">
+            <div class="header row">
+                <div class="title row">
+                    <div class="icon">
+                        <ChevronLeft24 />
+                    </div>
+                    &nbsp; &nbsp;
+                    {selectedList.title}
                 </div>
-                &nbsp; &nbsp;
-                {selectedList.title}
+                <div class="options">
+                    <OverflowMenuHorizontal24 />
+                </div>
             </div>
-            <div class="options">
-                <OverflowMenuHorizontal24 />
-            </div>
+            <br />
+            <AddTaskTile />
+            <br />
+            <br />
+            <span style="font-weight: 500;">Tasks - {items.length}</span>
+            <br />
+            <br />
+            {#each items as item (item.id)}
+                <ListItemTile completed={item.completed} title={item.title} />
+            {/each}
         </div>
-        <br />
-        <AddTaskTile />
-        <br />
-        <br />
-        <span style="font-weight: 500;">Tasks - {items.length}</span>
-        <br />
-        <br />
-        {#each items as item (item.id)}
-            <ListItemTile completed={item.completed} title={item.title} />
-        {/each}
-    </div>
+    {/if}
 </div>
 
 <style>

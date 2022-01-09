@@ -7,7 +7,7 @@ export interface TodoList {
 
 interface TodoListTitle {
     title: string;
-    id: number;
+    id: number | string;
     millisecondsSinceEpoch: number;
 }
 

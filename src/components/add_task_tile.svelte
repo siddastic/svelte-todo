@@ -1,15 +1,49 @@
-<script>
+<script lang="ts">
     import Add24 from "carbon-icons-svelte/lib/Add24";
     import Checkmark24 from "carbon-icons-svelte/lib/Checkmark24";
+    import { MainDataStore, OpenedListId } from "../stores/stores";
+    import { v4 as uuidv4 } from "uuid";
 
     let newTask = "";
 
     $: startedTyping = newTask.length > 0;
     $: isValidInput = newTask.trim().length > 0;
+
+    const addTask = () => {
+        MainDataStore.update((data) => {
+            const mainData = data;
+            const oldItems = mainData.items;
+            const currentItem = mainData.items.filter((e) => {
+                return e.key == $OpenedListId;
+            })[0];
+            currentItem.list.push({
+                completed: false,
+                id: uuidv4(),
+                millisecondsSinceEpoch: Date.now(),
+                title: newTask,
+            });
+            const newData = { ...mainData, items: [...oldItems, currentItem] };
+            return newData;
+        });
+        newTask = "";
+    };
+
+    const handleEnterPress = (k: KeyboardEvent) => {
+        if (k.key == "Enter") {
+            addTask();
+        }
+    };
 </script>
 
 <div class="add-task-tile row">
-    <div class="icon">
+    <div
+        class="icon"
+        on:click={() => {
+            if (isValidInput) {
+                addTask();
+            }
+        }}
+    >
         <Add24 style="fill : #17181f" />
     </div>
     <input
@@ -17,13 +51,14 @@
         contenteditable
         bind:value={newTask}
         placeholder="Add a task"
+        on:keydown={handleEnterPress}
     />
     {#if startedTyping}
-    <div class="indicator" class:valid-indicator={isValidInput}>
-        {#if isValidInput}
-            <Checkmark24 style="fill : mediumseagreen" />
-        {/if}
-    </div>
+        <div class="indicator" class:valid-indicator={isValidInput}>
+            {#if isValidInput}
+                <Checkmark24 style="fill : mediumseagreen" />
+            {/if}
+        </div>
     {/if}
 </div>
 

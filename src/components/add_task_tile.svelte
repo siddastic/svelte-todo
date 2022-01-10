@@ -3,6 +3,7 @@
     import Checkmark24 from "carbon-icons-svelte/lib/Checkmark24";
     import { MainDataStore, OpenedListId } from "../stores/stores";
     import { v4 as uuidv4 } from "uuid";
+import { removeItem } from "../api/helpers";
 
     let newTask = "";
 
@@ -12,10 +13,12 @@
     const addTask = () => {
         MainDataStore.update((data) => {
             const mainData = data;
-            const oldItems = mainData.items;
+            let oldItems = mainData.items;
             const currentItem = mainData.items.filter((e) => {
                 return e.key == $OpenedListId;
             })[0];
+            // to remove current item from old items
+            oldItems = removeItem(oldItems,currentItem);
             currentItem.list.push({
                 completed: false,
                 id: uuidv4(),

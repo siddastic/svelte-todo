@@ -1,6 +1,7 @@
 <script lang="ts">
     import Checkmark24 from "carbon-icons-svelte/lib/Checkmark24";
     import { createEventDispatcher } from "svelte";
+    import { scale, slide } from "svelte/transition";
     export let completed = false;
     export let title = "Finish Collaborative Essay";
 
@@ -8,11 +9,11 @@
 
     const handleTileSelect = () => {
         completed = !completed;
-        dispatch('change-state',completed);
+        dispatch("change-state", completed);
     };
 </script>
 
-<div class="list-tile" on:click={handleTileSelect}>
+<div class="list-tile" on:click={handleTileSelect} in:scale out:slide>
     <div class="leading" class:filled={completed}>
         {#if completed}
             <Checkmark24 style="fill : #17181f" />

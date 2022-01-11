@@ -6,6 +6,7 @@ html, body {
 
 body {
 	background-color: #17181f;
+	overflow: hidden;
 	margin: 0;
 	color: #dededf;
 	/* padding: 8px; */
@@ -62,3 +63,24 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: #17181f; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #21212b; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+  }

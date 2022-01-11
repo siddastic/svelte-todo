@@ -11489,33 +11489,33 @@ var app = (function () {
     			div10 = element("div");
     			div10.textContent = "Remove Completed";
     			attr_dev(div0, "class", "leading svelte-1xlnon7");
-    			add_location(div0, file$3, 56, 12, 2320);
+    			add_location(div0, file$3, 59, 12, 2489);
     			attr_dev(div1, "class", "title");
-    			add_location(div1, file$3, 59, 12, 2422);
+    			add_location(div1, file$3, 62, 12, 2591);
     			attr_dev(div2, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div2, file$3, 55, 8, 2258);
+    			add_location(div2, file$3, 58, 8, 2427);
     			attr_dev(div3, "class", "leading svelte-1xlnon7");
-    			add_location(div3, file$3, 62, 12, 2565);
+    			add_location(div3, file$3, 65, 12, 2734);
     			attr_dev(div4, "class", "title");
-    			add_location(div4, file$3, 65, 12, 2653);
+    			add_location(div4, file$3, 68, 12, 2822);
     			attr_dev(div5, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div5, file$3, 61, 8, 2483);
+    			add_location(div5, file$3, 64, 8, 2652);
     			attr_dev(div6, "class", "leading svelte-1xlnon7");
-    			add_location(div6, file$3, 68, 12, 2803);
+    			add_location(div6, file$3, 71, 12, 2972);
     			attr_dev(div7, "class", "title");
-    			add_location(div7, file$3, 71, 12, 2891);
+    			add_location(div7, file$3, 74, 12, 3060);
     			attr_dev(div8, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div8, file$3, 67, 8, 2720);
+    			add_location(div8, file$3, 70, 8, 2889);
     			attr_dev(div9, "class", "leading svelte-1xlnon7");
-    			add_location(div9, file$3, 74, 12, 3028);
+    			add_location(div9, file$3, 77, 12, 3197);
     			attr_dev(div10, "class", "title");
-    			add_location(div10, file$3, 77, 12, 3117);
+    			add_location(div10, file$3, 80, 12, 3286);
     			attr_dev(div11, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div11, file$3, 73, 8, 2960);
+    			add_location(div11, file$3, 76, 8, 3129);
     			attr_dev(div12, "class", "dropdown-content svelte-1xlnon7");
-    			add_location(div12, file$3, 54, 4, 2218);
+    			add_location(div12, file$3, 57, 4, 2387);
     			attr_dev(div13, "class", "dropdown svelte-1xlnon7");
-    			add_location(div13, file$3, 52, 0, 2171);
+    			add_location(div13, file$3, 55, 0, 2340);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11651,11 +11651,14 @@ var app = (function () {
     	const changeItemSelection = newState => {
     		MainDataStore.update(data => {
     			const mainData = data;
-    			const oldItems = mainData.items;
+    			let oldItems = mainData.items;
 
     			const currentItem = mainData.items.filter(e => {
     				return e.key == $OpenedListId;
     			})[0];
+
+    			// to remove current item from old items
+    			oldItems = removeItem(oldItems, currentItem);
 
     			currentItem.list.forEach(e => {
     				e.completed = newState;
@@ -11671,11 +11674,15 @@ var app = (function () {
     	const removeCompleted = () => {
     		MainDataStore.update(data => {
     			const mainData = data;
-    			const oldItems = mainData.items;
+    			let oldItems = mainData.items;
 
     			const currentItem = mainData.items.filter(e => {
     				return e.key == $OpenedListId;
     			})[0];
+
+    			// to remove current item from old items
+    			oldItems = removeItem(oldItems, currentItem);
+
     			currentItem.list = currentItem.list.filter(cur => !cur.completed);
     			const newData = Object.assign(Object.assign({}, mainData), { items: [...oldItems, currentItem] });
     			return newData;

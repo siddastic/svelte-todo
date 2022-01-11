@@ -26,10 +26,12 @@
     const changeItemSelection = (newState: boolean) => {
         MainDataStore.update((data) => {
             const mainData = data;
-            const oldItems = mainData.items;
+            let oldItems = mainData.items;
             const currentItem = mainData.items.filter((e) => {
                 return e.key == $OpenedListId;
             })[0];
+            // to remove current item from old items
+            oldItems = removeItem(oldItems, currentItem);
             currentItem.list.forEach(e=>{
                 e.completed = newState;
             });
@@ -41,11 +43,12 @@
     const removeCompleted = () => {
         MainDataStore.update((data) => {
             const mainData = data;
-            const oldItems = mainData.items;
+            let oldItems = mainData.items;
             const currentItem = mainData.items.filter((e) => {
                 return e.key == $OpenedListId;
             })[0];
-            let toRemoveAtIndexes = [];
+            // to remove current item from old items
+            oldItems = removeItem(oldItems, currentItem);
             currentItem.list = currentItem.list.filter(cur=>!cur.completed);
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;

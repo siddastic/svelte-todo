@@ -21,7 +21,8 @@ import { removeItem } from "../api/helpers";
             oldItems = removeItem(oldItems,currentItem);
             currentItem.list.push({
                 completed: false,
-                id: uuidv4(),
+                // If list was empty first then give id 1 to first element else random id (to let svelte animate component change automatically)
+                id: currentItem.list.length  == 0 ? 1 : uuidv4(),
                 millisecondsSinceEpoch: Date.now(),
                 title: newTask,
             });

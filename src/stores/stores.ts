@@ -56,6 +56,14 @@ export const MainDataStore = writable<TodoList>({
                     id: 354445,
                 }
             ],
+        },
+        {
+            key : 2,
+            list : [],
+        },
+        {
+            key : 3,
+            list : [],
         }
     ],
 });

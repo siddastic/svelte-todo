@@ -4301,7 +4301,7 @@ var app = (function () {
     const { Object: Object_1$2 } = globals;
     const file$b = "src\\components\\create_list_modal.svelte";
 
-    // (53:8) {#if !isValid() && newTitle.length > 0}
+    // (54:8) {#if !isValid() && newTitle.length > 0}
     function create_if_block$8(ctx) {
     	let t;
 
@@ -4324,7 +4324,7 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(53:8) {#if !isValid() && newTitle.length > 0}",
+    		source: "(54:8) {#if !isValid() && newTitle.length > 0}",
     		ctx
     	});
 
@@ -4373,19 +4373,20 @@ var app = (function () {
     			add_location(div0, file$b, 43, 4, 1174);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "Enter New List Title");
+    			input.autofocus = true;
     			attr_dev(input, "class", "svelte-15zqdsg");
     			add_location(input, file$b, 45, 8, 1258);
     			attr_dev(div1, "class", "modal-content svelte-15zqdsg");
     			add_location(div1, file$b, 44, 4, 1221);
     			attr_dev(div2, "class", "validation-message svelte-15zqdsg");
-    			add_location(div2, file$b, 51, 4, 1402);
+    			add_location(div2, file$b, 52, 4, 1432);
     			attr_dev(button0, "class", "svelte-15zqdsg");
-    			add_location(button0, file$b, 57, 8, 1576);
+    			add_location(button0, file$b, 58, 8, 1606);
     			attr_dev(button1, "class", "primary-button svelte-15zqdsg");
     			button1.disabled = button1_disabled_value = !/*isValid*/ ctx[2]();
-    			add_location(button1, file$b, 59, 8, 1655);
+    			add_location(button1, file$b, 60, 8, 1685);
     			attr_dev(div3, "class", "modal-buttons svelte-15zqdsg");
-    			add_location(div3, file$b, 56, 4, 1539);
+    			add_location(div3, file$b, 57, 4, 1569);
     			attr_dev(div4, "class", "modal svelte-15zqdsg");
     			add_location(div4, file$b, 42, 0, 1149);
     		},
@@ -4408,6 +4409,7 @@ var app = (function () {
     			append_dev(div3, t5);
     			append_dev(div3, button1);
     			append_dev(button1, t6);
+    			input.focus();
 
     			if (!mounted) {
     				dispose = [

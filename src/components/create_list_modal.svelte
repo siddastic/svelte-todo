@@ -57,6 +57,7 @@
             type="text"
             placeholder="Enter New List Title"
             bind:value={newTitle}
+            autofocus={true}
         />
     </div>
     <div class="validation-message">

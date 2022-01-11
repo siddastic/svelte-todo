@@ -24,11 +24,9 @@ import { onDestroy } from "svelte";
     });
 
     const openTodo = (id) => {
-        console.log(id);
         OpenedListId.update(() => {
             return id;
         });
-        console.log($MainDataStore);
         openedTileId = id;
     };
 

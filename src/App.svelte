@@ -3,6 +3,8 @@
 	import Header from "./components/header.svelte";
 	import ListBody from "./components/list-body.svelte";
 	import { addListModal } from "./stores/stores";
+
+	console.log("Welcome to Svelte TODO App ❤️");
 </script>
 
 <main>

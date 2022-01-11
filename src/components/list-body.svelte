@@ -5,6 +5,8 @@
     import AddTaskTile from "./add_task_tile.svelte";
     import { MainDataStore, OpenedListId } from "../stores/stores";
     import { fade } from "svelte/transition";
+import ListDropdown from "./list-dropdown.svelte";
+import { removeItem } from "../api/helpers";
 
     $: listId = $OpenedListId;
     $: isAnyListOpen = typeof listId == "number" || typeof listId == "string";
@@ -16,13 +18,15 @@
     const changeTaskState = (id, newState) => {
         MainDataStore.update((data) => {
             const mainData = data;
-            const oldItems = mainData.items;
+            let oldItems = mainData.items;
             const currentItem = mainData.items.filter((e) => {
                 return e.key == $OpenedListId;
             })[0];
             let itemIndex = currentItem.list.indexOf(
                 currentItem.list.filter((e) => e.id == id)[0]
             );
+            // to remove current item from old items
+            oldItems = removeItem(oldItems, currentItem);
             currentItem.list[itemIndex].completed = newState;
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;
@@ -31,7 +35,7 @@
     const deleteTask = (id) => {
         MainDataStore.update((data) => {
             const mainData = data;
-            const oldItems = mainData.items;
+            let oldItems = mainData.items;
             const currentItem = mainData.items.filter((e) => {
                 return e.key == $OpenedListId;
             })[0];
@@ -57,7 +61,9 @@
                     {selectedList.title}
                 </div>
                 <div class="options">
-                    <OverflowMenuHorizontal24 />
+                    <ListDropdown>
+                        <OverflowMenuHorizontal24 />
+                    </ListDropdown>
                 </div>
             </div>
             <br />

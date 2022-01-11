@@ -29,9 +29,7 @@
         <div class="right" />
     </div>
     <div class="nav-row">
-        {#if navVisible}
-            <Drawer />
-        {/if}
+        <Drawer open = {navVisible}/>
         <slot />
     </div>
 </div>

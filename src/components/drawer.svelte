@@ -10,6 +10,8 @@
     import CreateListModal from "./create_list_modal.svelte";
     import DrawerItem from "./drawer-item.svelte";
 
+    export let open : boolean = false;
+
     const showAddModal = () =>
         // @ts-ignore
         addListModal.set(bind(CreateListModal));
@@ -26,8 +28,8 @@
     };
 </script>
 
-<div class="drawer" transition:fade>
-    <div>
+<div class="drawer" class:open>
+    <div class="menuItemContainer" class:menuItemsVisible = {open}>
         {#each $MainDataStore.titles as li, index (li.id)}
             <DrawerItem
                 isOpen={openedTileId == li.id}
@@ -37,7 +39,7 @@
             />
         {/each}
     </div>
-    <div>
+    <div class="menuItemContainer" class:menuItemsVisible = {open}>
         <hr color="#b6b6b9" size=".99" />
         <DrawerItem title="Create New" color="primary" on:click={showAddModal}>
             <Add24 />
@@ -49,11 +51,23 @@
     .drawer {
         z-index: 0;
         background-color: #21212b;
-        width: 400px;
+        width: 0px;
         height: 93vh;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        opacity: 0;
+    }
+    .open{
+        width: 400px;
+        opacity: 1;
+    }
+    .menuItemContainer{
+        opacity: 0;
+        transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .menuItemsVisible{
+        opacity: 1;
     }
 </style>

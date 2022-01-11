@@ -1146,7 +1146,7 @@ var app = (function () {
     const file$h = "node_modules\\svelte-simple-modal\\src\\Modal.svelte";
 
     // (354:0) {#if Component}
-    function create_if_block$e(ctx) {
+    function create_if_block$d(ctx) {
     	let div3;
     	let div2;
     	let div1;
@@ -1383,7 +1383,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$e.name,
+    		id: create_if_block$d.name,
     		type: "if",
     		source: "(354:0) {#if Component}",
     		ctx
@@ -1606,7 +1606,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block = /*Component*/ ctx[1] && create_if_block$e(ctx);
+    	let if_block = /*Component*/ ctx[1] && create_if_block$d(ctx);
     	const default_slot_template = /*#slots*/ ctx[41].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[40], null);
 
@@ -1643,7 +1643,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$e(ctx);
+    					if_block = create_if_block$d(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(t.parentNode, t);
@@ -2369,7 +2369,7 @@ var app = (function () {
     const file$g = "node_modules\\carbon-icons-svelte\\lib\\Menu32\\Menu32.svelte";
 
     // (40:4) {#if title}
-    function create_if_block$d(ctx) {
+    function create_if_block$c(ctx) {
     	let title_1;
     	let t;
 
@@ -2393,7 +2393,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$d.name,
+    		id: create_if_block$c.name,
     		type: "if",
     		source: "(40:4) {#if title}",
     		ctx
@@ -2405,7 +2405,7 @@ var app = (function () {
     // (39:8)      
     function fallback_block$7(ctx) {
     	let if_block_anchor;
-    	let if_block = /*title*/ ctx[2] && create_if_block$d(ctx);
+    	let if_block = /*title*/ ctx[2] && create_if_block$c(ctx);
 
     	const block = {
     		c: function create() {
@@ -2421,7 +2421,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$d(ctx);
+    					if_block = create_if_block$c(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -2776,7 +2776,7 @@ var app = (function () {
     const file$f = "node_modules\\carbon-icons-svelte\\lib\\IbmCloudPakApplications32\\IbmCloudPakApplications32.svelte";
 
     // (40:4) {#if title}
-    function create_if_block$c(ctx) {
+    function create_if_block$b(ctx) {
     	let title_1;
     	let t;
 
@@ -2800,7 +2800,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$c.name,
+    		id: create_if_block$b.name,
     		type: "if",
     		source: "(40:4) {#if title}",
     		ctx
@@ -2812,7 +2812,7 @@ var app = (function () {
     // (39:8)      
     function fallback_block$6(ctx) {
     	let if_block_anchor;
-    	let if_block = /*title*/ ctx[2] && create_if_block$c(ctx);
+    	let if_block = /*title*/ ctx[2] && create_if_block$b(ctx);
 
     	const block = {
     		c: function create() {
@@ -2828,7 +2828,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$c(ctx);
+    					if_block = create_if_block$b(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -3197,7 +3197,7 @@ var app = (function () {
     const file$e = "node_modules\\carbon-icons-svelte\\lib\\Folder24\\Folder24.svelte";
 
     // (40:4) {#if title}
-    function create_if_block$b(ctx) {
+    function create_if_block$a(ctx) {
     	let title_1;
     	let t;
 
@@ -3221,7 +3221,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$b.name,
+    		id: create_if_block$a.name,
     		type: "if",
     		source: "(40:4) {#if title}",
     		ctx
@@ -3233,7 +3233,7 @@ var app = (function () {
     // (39:8)      
     function fallback_block$5(ctx) {
     	let if_block_anchor;
-    	let if_block = /*title*/ ctx[2] && create_if_block$b(ctx);
+    	let if_block = /*title*/ ctx[2] && create_if_block$a(ctx);
 
     	const block = {
     		c: function create() {
@@ -3249,7 +3249,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$b(ctx);
+    					if_block = create_if_block$a(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -3705,7 +3705,7 @@ var app = (function () {
     const file$c = "node_modules\\carbon-icons-svelte\\lib\\Add24\\Add24.svelte";
 
     // (40:4) {#if title}
-    function create_if_block$a(ctx) {
+    function create_if_block$9(ctx) {
     	let title_1;
     	let t;
 
@@ -3729,7 +3729,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$a.name,
+    		id: create_if_block$9.name,
     		type: "if",
     		source: "(40:4) {#if title}",
     		ctx
@@ -3741,7 +3741,7 @@ var app = (function () {
     // (39:8)      
     function fallback_block$4(ctx) {
     	let if_block_anchor;
-    	let if_block = /*title*/ ctx[2] && create_if_block$a(ctx);
+    	let if_block = /*title*/ ctx[2] && create_if_block$9(ctx);
 
     	const block = {
     		c: function create() {
@@ -3757,7 +3757,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$a(ctx);
+    					if_block = create_if_block$9(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -4302,7 +4302,7 @@ var app = (function () {
     const file$b = "src\\components\\create_list_modal.svelte";
 
     // (53:8) {#if !isValid() && newTitle.length > 0}
-    function create_if_block$9(ctx) {
+    function create_if_block$8(ctx) {
     	let t;
 
     	const block = {
@@ -4322,7 +4322,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$9.name,
+    		id: create_if_block$8.name,
     		type: "if",
     		source: "(53:8) {#if !isValid() && newTitle.length > 0}",
     		ctx
@@ -4349,7 +4349,7 @@ var app = (function () {
     	let button1_disabled_value;
     	let mounted;
     	let dispose;
-    	let if_block = show_if && create_if_block$9(ctx);
+    	let if_block = show_if && create_if_block$8(ctx);
 
     	const block = {
     		c: function create() {
@@ -4430,7 +4430,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$9(ctx);
+    					if_block = create_if_block$8(ctx);
     					if_block.c();
     					if_block.m(div2, null);
     				}
@@ -4572,7 +4572,7 @@ var app = (function () {
     const file$a = "node_modules\\carbon-icons-svelte\\lib\\Notebook24\\Notebook24.svelte";
 
     // (40:4) {#if title}
-    function create_if_block$8(ctx) {
+    function create_if_block$7(ctx) {
     	let title_1;
     	let t;
 
@@ -4596,7 +4596,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$8.name,
+    		id: create_if_block$7.name,
     		type: "if",
     		source: "(40:4) {#if title}",
     		ctx
@@ -4608,7 +4608,7 @@ var app = (function () {
     // (39:8)      
     function fallback_block$3(ctx) {
     	let if_block_anchor;
-    	let if_block = /*title*/ ctx[2] && create_if_block$8(ctx);
+    	let if_block = /*title*/ ctx[2] && create_if_block$7(ctx);
 
     	const block = {
     		c: function create() {
@@ -4624,7 +4624,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$8(ctx);
+    					if_block = create_if_block$7(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -5023,7 +5023,7 @@ var app = (function () {
     }
 
     // (13:8) {#if PROPS.$$slots}
-    function create_if_block$7(ctx) {
+    function create_if_block$6(ctx) {
     	let current;
     	const default_slot_template = /*#slots*/ ctx[5].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[4], null);
@@ -5071,7 +5071,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$7.name,
+    		id: create_if_block$6.name,
     		type: "if",
     		source: "(13:8) {#if PROPS.$$slots}",
     		ctx
@@ -5091,7 +5091,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	const if_block_creators = [create_if_block$7, create_else_block];
+    	const if_block_creators = [create_if_block$6, create_else_block];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -5266,12 +5266,12 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i];
-    	child_ctx[7] = i;
+    	child_ctx[6] = list[i];
+    	child_ctx[8] = i;
     	return child_ctx;
     }
 
-    // (23:8) {#each $MainDataStore.titles as li, index (li.id)}
+    // (24:8) {#each $MainDataStore.titles as li, index (li.id)}
     function create_each_block$1(key_1, ctx) {
     	let first;
     	let draweritem;
@@ -5279,15 +5279,15 @@ var app = (function () {
 
     	draweritem = new Drawer_item({
     			props: {
-    				isOpen: /*openedTileId*/ ctx[0] == /*li*/ ctx[5].id,
-    				title: /*li*/ ctx[5].title,
-    				color: /*index*/ ctx[7] % 2 == 0 ? "primary" : "secondary"
+    				isOpen: /*openedTileId*/ ctx[1] == /*li*/ ctx[6].id,
+    				title: /*li*/ ctx[6].title,
+    				color: /*index*/ ctx[8] % 2 == 0 ? "primary" : "secondary"
     			},
     			$$inline: true
     		});
 
     	draweritem.$on("click", function () {
-    		if (is_function(/*openTodo*/ ctx[3].bind(null, /*li*/ ctx[5].id))) /*openTodo*/ ctx[3].bind(null, /*li*/ ctx[5].id).apply(this, arguments);
+    		if (is_function(/*openTodo*/ ctx[4].bind(null, /*li*/ ctx[6].id))) /*openTodo*/ ctx[4].bind(null, /*li*/ ctx[6].id).apply(this, arguments);
     	});
 
     	const block = {
@@ -5306,9 +5306,9 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const draweritem_changes = {};
-    			if (dirty & /*openedTileId, $MainDataStore*/ 3) draweritem_changes.isOpen = /*openedTileId*/ ctx[0] == /*li*/ ctx[5].id;
-    			if (dirty & /*$MainDataStore*/ 2) draweritem_changes.title = /*li*/ ctx[5].title;
-    			if (dirty & /*$MainDataStore*/ 2) draweritem_changes.color = /*index*/ ctx[7] % 2 == 0 ? "primary" : "secondary";
+    			if (dirty & /*openedTileId, $MainDataStore*/ 6) draweritem_changes.isOpen = /*openedTileId*/ ctx[1] == /*li*/ ctx[6].id;
+    			if (dirty & /*$MainDataStore*/ 4) draweritem_changes.title = /*li*/ ctx[6].title;
+    			if (dirty & /*$MainDataStore*/ 4) draweritem_changes.color = /*index*/ ctx[8] % 2 == 0 ? "primary" : "secondary";
     			draweritem.$set(draweritem_changes);
     		},
     		i: function intro(local) {
@@ -5330,14 +5330,14 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(23:8) {#each $MainDataStore.titles as li, index (li.id)}",
+    		source: "(24:8) {#each $MainDataStore.titles as li, index (li.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:8) <DrawerItem title="Create New" color="primary" on:click={showAddModal}>
+    // (35:8) <DrawerItem title="Create New" color="primary" on:click={showAddModal}>
     function create_default_slot$2(ctx) {
     	let add24;
     	let current;
@@ -5369,7 +5369,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(34:8) <DrawerItem title=\\\"Create New\\\" color=\\\"primary\\\" on:click={showAddModal}>",
+    		source: "(35:8) <DrawerItem title=\\\"Create New\\\" color=\\\"primary\\\" on:click={showAddModal}>",
     		ctx
     	});
 
@@ -5386,11 +5386,10 @@ var app = (function () {
     	let hr;
     	let t1;
     	let draweritem;
-    	let div2_transition;
     	let current;
-    	let each_value = /*$MainDataStore*/ ctx[1].titles;
+    	let each_value = /*$MainDataStore*/ ctx[2].titles;
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*li*/ ctx[5].id;
+    	const get_key = ctx => /*li*/ ctx[6].id;
     	validate_each_keys(ctx, each_value, get_each_context$1, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -5409,7 +5408,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	draweritem.$on("click", /*showAddModal*/ ctx[2]);
+    	draweritem.$on("click", /*showAddModal*/ ctx[3]);
 
     	const block = {
     		c: function create() {
@@ -5425,13 +5424,18 @@ var app = (function () {
     			hr = element("hr");
     			t1 = space();
     			create_component(draweritem.$$.fragment);
-    			add_location(div0, file$8, 21, 4, 695);
+    			attr_dev(div0, "class", "menuItemContainer svelte-1w6u2hr");
+    			toggle_class(div0, "menuItemsVisible", /*open*/ ctx[0]);
+    			add_location(div0, file$8, 22, 4, 702);
     			attr_dev(hr, "color", "#b6b6b9");
     			attr_dev(hr, "size", ".99");
-    			add_location(hr, file$8, 32, 8, 1054);
-    			add_location(div1, file$8, 31, 4, 1039);
-    			attr_dev(div2, "class", "drawer svelte-1e3071g");
-    			add_location(div2, file$8, 20, 0, 653);
+    			add_location(hr, file$8, 33, 8, 1177);
+    			attr_dev(div1, "class", "menuItemContainer svelte-1w6u2hr");
+    			toggle_class(div1, "menuItemsVisible", /*open*/ ctx[0]);
+    			add_location(div1, file$8, 32, 4, 1104);
+    			attr_dev(div2, "class", "drawer svelte-1w6u2hr");
+    			toggle_class(div2, "open", /*open*/ ctx[0]);
+    			add_location(div2, file$8, 21, 0, 665);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5452,8 +5456,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*openedTileId, $MainDataStore, openTodo*/ 11) {
-    				each_value = /*$MainDataStore*/ ctx[1].titles;
+    			if (dirty & /*openedTileId, $MainDataStore, openTodo*/ 22) {
+    				each_value = /*$MainDataStore*/ ctx[2].titles;
     				validate_each_argument(each_value);
     				group_outros();
     				validate_each_keys(ctx, each_value, get_each_context$1, get_key);
@@ -5461,13 +5465,25 @@ var app = (function () {
     				check_outros();
     			}
 
+    			if (dirty & /*open*/ 1) {
+    				toggle_class(div0, "menuItemsVisible", /*open*/ ctx[0]);
+    			}
+
     			const draweritem_changes = {};
 
-    			if (dirty & /*$$scope*/ 256) {
+    			if (dirty & /*$$scope*/ 512) {
     				draweritem_changes.$$scope = { dirty, ctx };
     			}
 
     			draweritem.$set(draweritem_changes);
+
+    			if (dirty & /*open*/ 1) {
+    				toggle_class(div1, "menuItemsVisible", /*open*/ ctx[0]);
+    			}
+
+    			if (dirty & /*open*/ 1) {
+    				toggle_class(div2, "open", /*open*/ ctx[0]);
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -5477,12 +5493,6 @@ var app = (function () {
     			}
 
     			transition_in(draweritem.$$.fragment, local);
-
-    			add_render_callback(() => {
-    				if (!div2_transition) div2_transition = create_bidirectional_transition(div2, fade, {}, true);
-    				div2_transition.run(1);
-    			});
-
     			current = true;
     		},
     		o: function outro(local) {
@@ -5491,8 +5501,6 @@ var app = (function () {
     			}
 
     			transition_out(draweritem.$$.fragment, local);
-    			if (!div2_transition) div2_transition = create_bidirectional_transition(div2, fade, {}, false);
-    			div2_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -5503,7 +5511,6 @@ var app = (function () {
     			}
 
     			destroy_component(draweritem);
-    			if (detaching && div2_transition) div2_transition.end();
     		}
     	};
 
@@ -5522,11 +5529,12 @@ var app = (function () {
     	let $MainDataStore;
     	let $OpenedListId;
     	validate_store(MainDataStore, 'MainDataStore');
-    	component_subscribe($$self, MainDataStore, $$value => $$invalidate(1, $MainDataStore = $$value));
+    	component_subscribe($$self, MainDataStore, $$value => $$invalidate(2, $MainDataStore = $$value));
     	validate_store(OpenedListId, 'OpenedListId');
-    	component_subscribe($$self, OpenedListId, $$value => $$invalidate(4, $OpenedListId = $$value));
+    	component_subscribe($$self, OpenedListId, $$value => $$invalidate(5, $OpenedListId = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Drawer', slots, []);
+    	let { open = false } = $$props;
 
     	const showAddModal = () => // @ts-ignore
     	addListModal.set(bind(Create_list_modal));
@@ -5541,24 +5549,28 @@ var app = (function () {
     		});
 
     		console.log($MainDataStore);
-    		$$invalidate(0, openedTileId = id);
+    		$$invalidate(1, openedTileId = id);
     	};
 
-    	const writable_props = [];
+    	const writable_props = ['open'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<Drawer> was created with unknown prop '${key}'`);
     	});
 
+    	$$self.$$set = $$props => {
+    		if ('open' in $$props) $$invalidate(0, open = $$props.open);
+    	};
+
     	$$self.$capture_state = () => ({
     		Add24: Add24$1,
     		bind,
-    		fade,
     		addListModal,
     		MainDataStore,
     		OpenedListId,
     		CreateListModal: Create_list_modal,
     		DrawerItem: Drawer_item,
+    		open,
     		showAddModal,
     		openedTileId,
     		openTodo,
@@ -5567,20 +5579,21 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('openedTileId' in $$props) $$invalidate(0, openedTileId = $$props.openedTileId);
+    		if ('open' in $$props) $$invalidate(0, open = $$props.open);
+    		if ('openedTileId' in $$props) $$invalidate(1, openedTileId = $$props.openedTileId);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [openedTileId, $MainDataStore, showAddModal, openTodo];
+    	return [open, openedTileId, $MainDataStore, showAddModal, openTodo];
     }
 
     class Drawer extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$8, create_fragment$8, safe_not_equal, {});
+    		init(this, options, instance$8, create_fragment$8, safe_not_equal, { open: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -5588,6 +5601,14 @@ var app = (function () {
     			options,
     			id: create_fragment$8.name
     		});
+    	}
+
+    	get open() {
+    		throw new Error("<Drawer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set open(value) {
+    		throw new Error("<Drawer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -5692,45 +5713,6 @@ var app = (function () {
     	return block;
     }
 
-    // (29:8) {#if navVisible}
-    function create_if_block$6(ctx) {
-    	let drawer;
-    	let current;
-    	drawer = new Drawer({ $$inline: true });
-
-    	const block = {
-    		c: function create() {
-    			create_component(drawer.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(drawer, target, anchor);
-    			current = true;
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(drawer.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(drawer.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(drawer, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block$6.name,
-    		type: "if",
-    		source: "(29:8) {#if navVisible}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
     function create_fragment$7(ctx) {
     	let div5;
     	let div3;
@@ -5745,6 +5727,7 @@ var app = (function () {
     	let div2;
     	let t3;
     	let div4;
+    	let drawer;
     	let t4;
     	let current;
     	let mounted;
@@ -5767,7 +5750,11 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block = /*navVisible*/ ctx[0] && create_if_block$6(ctx);
+    	drawer = new Drawer({
+    			props: { open: /*navVisible*/ ctx[0] },
+    			$$inline: true
+    		});
+
     	const default_slot_template = /*#slots*/ ctx[1].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
 
@@ -5786,7 +5773,7 @@ var app = (function () {
     			div2 = element("div");
     			t3 = space();
     			div4 = element("div");
-    			if (if_block) if_block.c();
+    			create_component(drawer.$$.fragment);
     			t4 = space();
     			if (default_slot) default_slot.c();
     			add_location(div0, file$7, 11, 12, 413);
@@ -5817,7 +5804,7 @@ var app = (function () {
     			append_dev(div3, div2);
     			append_dev(div5, t3);
     			append_dev(div5, div4);
-    			if (if_block) if_block.m(div4, null);
+    			mount_component(drawer, div4, null);
     			append_dev(div4, t4);
 
     			if (default_slot) {
@@ -5846,27 +5833,9 @@ var app = (function () {
     			}
 
     			iconrow1.$set(iconrow1_changes);
-
-    			if (/*navVisible*/ ctx[0]) {
-    				if (if_block) {
-    					if (dirty & /*navVisible*/ 1) {
-    						transition_in(if_block, 1);
-    					}
-    				} else {
-    					if_block = create_if_block$6(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(div4, t4);
-    				}
-    			} else if (if_block) {
-    				group_outros();
-
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
-    				});
-
-    				check_outros();
-    			}
+    			const drawer_changes = {};
+    			if (dirty & /*navVisible*/ 1) drawer_changes.open = /*navVisible*/ ctx[0];
+    			drawer.$set(drawer_changes);
 
     			if (default_slot) {
     				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
@@ -5888,7 +5857,7 @@ var app = (function () {
     			transition_in(menu24.$$.fragment, local);
     			transition_in(iconrow0.$$.fragment, local);
     			transition_in(iconrow1.$$.fragment, local);
-    			transition_in(if_block);
+    			transition_in(drawer.$$.fragment, local);
     			transition_in(default_slot, local);
     			current = true;
     		},
@@ -5896,7 +5865,7 @@ var app = (function () {
     			transition_out(menu24.$$.fragment, local);
     			transition_out(iconrow0.$$.fragment, local);
     			transition_out(iconrow1.$$.fragment, local);
-    			transition_out(if_block);
+    			transition_out(drawer.$$.fragment, local);
     			transition_out(default_slot, local);
     			current = false;
     		},
@@ -5905,7 +5874,7 @@ var app = (function () {
     			destroy_component(menu24);
     			destroy_component(iconrow0);
     			destroy_component(iconrow1);
-    			if (if_block) if_block.d();
+    			destroy_component(drawer);
     			if (default_slot) default_slot.d(detaching);
     			mounted = false;
     			dispose();

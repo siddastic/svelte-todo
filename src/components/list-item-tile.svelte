@@ -1,5 +1,6 @@
 <script lang="ts">
     import Checkmark24 from "carbon-icons-svelte/lib/Checkmark24";
+    import Delete24 from "carbon-icons-svelte/lib/Delete24";
     import { createEventDispatcher } from "svelte";
     import { scale, slide } from "svelte/transition";
     export let completed = false;
@@ -23,6 +24,9 @@
     <div class="title" class:completed-title-color={completed}>
         {title}
         <div class="crossthrough" class:crossthrough-completed={completed} />
+    </div>
+    <div class="trailing">
+        <Delete24 style = "fill : tomato"/>
     </div>
 </div>
 
@@ -57,6 +61,14 @@
         position: relative;
         color: white;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        flex: 1;
+    }
+    .trailing{
+        opacity: 0;
+        transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .list-tile:hover .trailing{
+        opacity: 1;
     }
     .crossthrough {
         width: 0%;

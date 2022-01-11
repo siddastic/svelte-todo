@@ -5146,7 +5146,7 @@ var app = (function () {
     const { Object: Object_1$3 } = globals;
     const file$j = "src\\components\\create_list_modal.svelte";
 
-    // (65:8) {#if !isValid() && newTitle.length > 0}
+    // (68:8) {#if !isValid() && newTitle.length > 0}
     function create_if_block$f(ctx) {
     	let t;
 
@@ -5169,7 +5169,7 @@ var app = (function () {
     		block,
     		id: create_if_block$f.name,
     		type: "if",
-    		source: "(65:8) {#if !isValid() && newTitle.length > 0}",
+    		source: "(68:8) {#if !isValid() && newTitle.length > 0}",
     		ctx
     	});
 
@@ -5215,25 +5215,25 @@ var app = (function () {
     			button1 = element("button");
     			t6 = text("Save");
     			attr_dev(div0, "class", "header svelte-15zqdsg");
-    			add_location(div0, file$j, 52, 4, 1425);
+    			add_location(div0, file$j, 55, 4, 1497);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "Enter New List Title");
     			input.autofocus = true;
     			attr_dev(input, "class", "svelte-15zqdsg");
-    			add_location(input, file$j, 55, 8, 1556);
+    			add_location(input, file$j, 58, 8, 1628);
     			attr_dev(div1, "class", "modal-content svelte-15zqdsg");
-    			add_location(div1, file$j, 53, 4, 1472);
+    			add_location(div1, file$j, 56, 4, 1544);
     			attr_dev(div2, "class", "validation-message svelte-15zqdsg");
-    			add_location(div2, file$j, 63, 4, 1773);
+    			add_location(div2, file$j, 66, 4, 1845);
     			attr_dev(button0, "class", "svelte-15zqdsg");
-    			add_location(button0, file$j, 69, 8, 1947);
+    			add_location(button0, file$j, 72, 8, 2019);
     			attr_dev(button1, "class", "primary-button svelte-15zqdsg");
     			button1.disabled = button1_disabled_value = !/*isValid*/ ctx[2]();
-    			add_location(button1, file$j, 71, 8, 2026);
+    			add_location(button1, file$j, 74, 8, 2098);
     			attr_dev(div3, "class", "modal-buttons svelte-15zqdsg");
-    			add_location(div3, file$j, 68, 4, 1910);
+    			add_location(div3, file$j, 71, 4, 1982);
     			attr_dev(div4, "class", "modal svelte-15zqdsg");
-    			add_location(div4, file$j, 51, 0, 1400);
+    			add_location(div4, file$j, 54, 0, 1472);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5326,10 +5326,9 @@ var app = (function () {
 
     	const saveTitle = () => {
     		closeModal();
+    		let id = v4();
 
     		MainDataStore.update(data => {
-    			let id = v4();
-
     			return Object.assign(Object.assign({}, data), {
     				titles: [
     					...data.titles,
@@ -5341,6 +5340,10 @@ var app = (function () {
     				],
     				items: [...data.items, { key: id, list: [] }]
     			});
+    		});
+
+    		OpenedListId.update(() => {
+    			return id;
     		});
 
     		saveCurrentStoreDataToLocalStorage();
@@ -5368,6 +5371,7 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		addListModal,
     		MainDataStore,
+    		OpenedListId,
     		uuidv4: v4,
     		saveCurrentStoreDataToLocalStorage,
     		newTitle,

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { addListModal, MainDataStore } from "../stores/stores";
+    import { addListModal, MainDataStore, OpenedListId } from "../stores/stores";
     import { v4 as uuidv4 } from "uuid";
     import type { TodoList } from "../interfaces/global";
 import { saveCurrentStoreDataToLocalStorage } from "../api/helpers";
@@ -27,8 +27,8 @@ import { saveCurrentStoreDataToLocalStorage } from "../api/helpers";
 
     const saveTitle = () => {
         closeModal();
+        let id = uuidv4();
         MainDataStore.update((data) => {
-            let id = uuidv4();
             return {
                 ...data,
                 titles: [
@@ -47,6 +47,9 @@ import { saveCurrentStoreDataToLocalStorage } from "../api/helpers";
                     },
                 ],
             };
+        });
+        OpenedListId.update(() => {
+            return id;
         });
         saveCurrentStoreDataToLocalStorage();
     };

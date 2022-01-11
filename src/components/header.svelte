@@ -1,12 +1,25 @@
 <script lang="ts">
     import Menu24 from "carbon-icons-svelte/lib/Menu32";
     import IbmCloudPakApplications32 from "carbon-icons-svelte/lib/IbmCloudPakApplications32";
+    import DocumentExport24 from "carbon-icons-svelte/lib/DocumentExport24";
+    import DocumentImport24 from "carbon-icons-svelte/lib/DocumentImport24";
     import Folder24 from "carbon-icons-svelte/lib/Folder24";
     import IconRow from "./icon_row.svelte";
+    import { saveAs } from "file-saver";
 
     import Drawer from "./drawer.svelte";
+    import { MainDataStore } from "../stores/stores";
+import { importData } from "../api/helpers";
 
     let navVisible = true;
+
+    const exportData = () => {
+        var file = new File(
+            [JSON.stringify($MainDataStore, null, 4)],
+            "exported-todos.json"
+        );
+        saveAs(file);
+    };
 </script>
 
 <div>
@@ -26,10 +39,21 @@
                 <div>Lists</div>
             </IconRow>
         </div>
-        <div class="right" />
+        <div class="right">
+            <IconRow on:click={importData}>
+                <DocumentImport24 />
+                &nbsp;
+                <div>Import File</div>
+            </IconRow>
+            <IconRow on:click={exportData}>
+                <DocumentExport24 />
+                &nbsp;
+                <div>Export Data</div>
+            </IconRow>
+        </div>
     </div>
     <div class="nav-row">
-        <Drawer open = {navVisible}/>
+        <Drawer open={navVisible} />
         <slot />
     </div>
 </div>
@@ -51,6 +75,11 @@
         display: inherit;
         justify-content: center;
         align-items: center;
+    }
+
+    .right{
+        display: flex;
+        flex-direction: row;
     }
 
     .nav-row {

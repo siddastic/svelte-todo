@@ -1,4 +1,4 @@
-<div class="icon_row">
+<div class="icon_row" on:click>
     <slot></slot>
 </div>
 

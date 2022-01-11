@@ -69,4 +69,4 @@ export const MainDataStore = writable<TodoList>({
 });
 
 
-export const OpenedListId = writable<number | string | Empty>(0);
+export const OpenedListId = writable<number | string | Empty>(null);

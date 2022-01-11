@@ -5,8 +5,9 @@
     import AddTaskTile from "./add_task_tile.svelte";
     import { MainDataStore, OpenedListId } from "../stores/stores";
     import { fade } from "svelte/transition";
-import ListDropdown from "./list-dropdown.svelte";
-import { removeItem } from "../api/helpers";
+    import ListDropdown from "./list-dropdown.svelte";
+    import { removeItem } from "../api/helpers";
+    import DefaultView from "./default_view.svelte";
 
     $: listId = $OpenedListId;
     $: isAnyListOpen = typeof listId == "number" || typeof listId == "string";
@@ -80,7 +81,7 @@ import { removeItem } from "../api/helpers";
                     on:change-state={(newState) => {
                         changeTaskState(item.id, newState.detail);
                     }}
-                    on:delete={()=>deleteTask(item.id)}
+                    on:delete={() => deleteTask(item.id)}
                 />
             {/each}
             {#if items.length == 0}
@@ -89,6 +90,8 @@ import { removeItem } from "../api/helpers";
                 </div>
             {/if}
         </div>
+    {:else}
+        <DefaultView />
     {/if}
 </div>
 

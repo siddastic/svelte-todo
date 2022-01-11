@@ -41,7 +41,7 @@
     </div>
     <div class="menuItemContainer" class:menuItemsVisible = {open}>
         <hr color="#b6b6b9" size=".99" />
-        <DrawerItem title="Create New" color="primary" on:click={showAddModal}>
+        <DrawerItem title="Create New List" color="primary" on:click={showAddModal}>
             <Add24 />
         </DrawerItem>
     </div>

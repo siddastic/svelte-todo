@@ -6292,16 +6292,16 @@ var app = (function () {
     			hr = element("hr");
     			t1 = space();
     			create_component(draweritem.$$.fragment);
-    			attr_dev(div0, "class", "menuItemContainer svelte-11rwqv6");
+    			attr_dev(div0, "class", "menuItemContainer drawer-item-container svelte-1kwyihy");
     			toggle_class(div0, "menuItemsVisible", /*open*/ ctx[0]);
     			add_location(div0, file$g, 27, 4, 835);
     			attr_dev(hr, "color", "#b6b6b9");
     			attr_dev(hr, "size", ".99");
-    			add_location(hr, file$g, 38, 8, 1310);
-    			attr_dev(div1, "class", "menuItemContainer svelte-11rwqv6");
+    			add_location(hr, file$g, 38, 8, 1332);
+    			attr_dev(div1, "class", "menuItemContainer svelte-1kwyihy");
     			toggle_class(div1, "menuItemsVisible", /*open*/ ctx[0]);
-    			add_location(div1, file$g, 37, 4, 1237);
-    			attr_dev(div2, "class", "drawer svelte-11rwqv6");
+    			add_location(div1, file$g, 37, 4, 1259);
+    			attr_dev(div2, "class", "drawer svelte-1kwyihy");
     			toggle_class(div2, "open", /*open*/ ctx[0]);
     			add_location(div2, file$g, 26, 0, 798);
     		},

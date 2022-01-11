@@ -36,7 +36,7 @@ import { onDestroy } from "svelte";
 </script>
 
 <div class="drawer" class:open>
-    <div class="menuItemContainer" class:menuItemsVisible = {open}>
+    <div class="menuItemContainer drawer-item-container" class:menuItemsVisible = {open}>
         {#each $MainDataStore.titles as li, index (li.id)}
             <DrawerItem
                 isOpen={openedTileId == li.id}
@@ -65,6 +65,10 @@ import { onDestroy } from "svelte";
         flex-direction: column;
         justify-content: space-between;
         opacity: 0;
+    }
+    .drawer-item-container{
+        height: 90vh;
+        overflow-y: scroll;
     }
     .open{
         width: 400px;

@@ -25,7 +25,7 @@
 <div>
     <div class="header">
         <div class="left">
-            <div on:click={() => (navVisible = !navVisible)}>
+            <div on:click={() => (navVisible = !navVisible)} style = "cursor : pointer">
                 <Menu24 />
             </div>
             <IconRow>

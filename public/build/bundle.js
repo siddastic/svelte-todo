@@ -4445,7 +4445,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			if (default_slot) default_slot.c();
-    			attr_dev(div, "class", "icon_row svelte-l2jh2p");
+    			attr_dev(div, "class", "icon_row svelte-1bfu1sh");
     			add_location(div, file$l, 0, 0, 0);
     		},
     		l: function claim(nodes) {
@@ -6504,7 +6504,7 @@ var app = (function () {
     			t0 = text("\r\n                 \r\n                ");
     			div = element("div");
     			div.textContent = "Dashboard";
-    			add_location(div, file$f, 26, 16, 1048);
+    			add_location(div, file$f, 26, 16, 1075);
     		},
     		m: function mount(target, anchor) {
     			mount_component(ibmcloudpakapplications32, target, anchor);
@@ -6553,7 +6553,7 @@ var app = (function () {
     			t0 = text("\r\n                 \r\n                ");
     			div = element("div");
     			div.textContent = "Lists";
-    			add_location(div, file$f, 31, 16, 1187);
+    			add_location(div, file$f, 31, 16, 1214);
     		},
     		m: function mount(target, anchor) {
     			mount_component(folder24, target, anchor);
@@ -6602,7 +6602,7 @@ var app = (function () {
     			t0 = text("\r\n                 \r\n                ");
     			div = element("div");
     			div.textContent = "Import File";
-    			add_location(div, file$f, 38, 16, 1397);
+    			add_location(div, file$f, 38, 16, 1424);
     		},
     		m: function mount(target, anchor) {
     			mount_component(documentimport24, target, anchor);
@@ -6651,7 +6651,7 @@ var app = (function () {
     			t0 = text("\r\n                 \r\n                ");
     			div = element("div");
     			div.textContent = "Export Data";
-    			add_location(div, file$f, 43, 16, 1568);
+    			add_location(div, file$f, 43, 16, 1595);
     		},
     		m: function mount(target, anchor) {
     			mount_component(documentexport24, target, anchor);
@@ -6775,15 +6775,16 @@ var app = (function () {
     			create_component(drawer.$$.fragment);
     			t5 = space();
     			if (default_slot) default_slot.c();
+    			attr_dev(div0, "style", "cursor : pointer");
     			add_location(div0, file$f, 20, 12, 839);
     			attr_dev(div1, "class", "left svelte-xazg9i");
     			add_location(div1, file$f, 19, 8, 807);
     			attr_dev(div2, "class", "right svelte-xazg9i");
-    			add_location(div2, file$f, 34, 8, 1253);
+    			add_location(div2, file$f, 34, 8, 1280);
     			attr_dev(div3, "class", "header svelte-xazg9i");
     			add_location(div3, file$f, 18, 4, 777);
     			attr_dev(div4, "class", "nav-row svelte-xazg9i");
-    			add_location(div4, file$f, 47, 4, 1648);
+    			add_location(div4, file$f, 47, 4, 1675);
     			add_location(div5, file$f, 17, 0, 766);
     		},
     		l: function claim(nodes) {

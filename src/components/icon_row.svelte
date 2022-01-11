@@ -9,5 +9,6 @@
         padding-left: 15px;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
 </style>

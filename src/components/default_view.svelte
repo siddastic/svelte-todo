@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onDestroy, onMount } from "svelte";
-    import { addListModal } from "../stores/stores";
+    import { addListModal, AppLoaded } from "../stores/stores";
     import { bind } from "svelte-simple-modal";
     import { slide } from "svelte/transition";
     import CreateListModal from "./create_list_modal.svelte";
@@ -39,6 +39,10 @@
     const showAddModal = () =>
         // @ts-ignore
         addListModal.set(bind(CreateListModal));
+
+    window.onload = () => {
+        setTimeout(() => AppLoaded.update(() => true), 3000);
+    };
 </script>
 
 <div class="main" out:slide>
@@ -47,78 +51,93 @@
             <span class="title-part">{t}</span>
         {/each}
     </div>
-    <div class="tagline">A Todo list app #MadeWithSvelte</div>
-    <br />
-    <hr color="#21212b" />
-    <div class="body">
-        <br />
-        Svelte-todo utilizes browser's local storage for storing you data, you can
-        also Import / Export your data as json
-        <br />
-        <br />
-        Start By
-        <span class="highlight" on:click={() => showAddModal()}
-            >Creating a New list</span
-        >
-        from left drawer or
-        <span class="highlight" on:click={importData}>Import</span> an existing svelte-todo
-        exported file
-    </div>
-    <hr color="#21212b" />
-    <br />
-    <div class="link-row">
-        <div class="link">
-            Made With - <a href="https://svelte.dev/" target="_blank">Svelte</a>
-            and
-            <a href="https://www.typescriptlang.org/" target="_blank"
-                >TypeScript</a
-            >
+    {#if $AppLoaded}
+        <div class="loaded-content">
+            <div class="tagline">A Todo list app #MadeWithSvelte</div>
+            <br />
+            <hr color="#21212b" />
+            <div class="body">
+                <br />
+                Svelte-todo utilizes browser's local storage for storing you data,
+                you can also Import / Export your data as json
+                <br />
+                <br />
+                Start By
+                <span class="highlight" on:click={() => showAddModal()}
+                    >Creating a New list</span
+                >
+                from left drawer or
+                <span class="highlight" on:click={importData}>Import</span> an existing
+                svelte-todo exported file
+            </div>
+            <hr color="#21212b" />
+            <br />
+            <div class="link-row">
+                <div class="link">
+                    Made With - <a href="https://svelte.dev/" target="_blank"
+                        >Svelte</a
+                    >
+                    and
+                    <a href="https://www.typescriptlang.org/" target="_blank"
+                        >TypeScript</a
+                    >
+                </div>
+                <div class="link">
+                    Source Code - <a
+                        href="https://github.com/siddastic/svelte-todo"
+                        target="_blank">Github</a
+                    >
+                </div>
+            </div>
+            <br />
+            <div class="link-row">
+                <div class="link">
+                    Created By - <a
+                        href="https://github.com/siddastic"
+                        target="_blank">siddastic (Siddhant Sharma)</a
+                    >
+                </div>
+                <div class="link">
+                    Documentation - <a
+                        href="https://github.com/siddastic/svelte-todo#readme"
+                        target="_blank">View</a
+                    >
+                </div>
+            </div>
+            <br />
+            <div class="link-row">
+                <div class="link">
+                    Settings - <span
+                        class="highlight"
+                        on:click={() => {
+                            if (
+                                confirm(
+                                    "All lists and their todos will be deleted\nMake sure to Export data before deleting\nAre you sure to delete?"
+                                )
+                            ) {
+                                clearAllAppData();
+                            }
+                        }}>Clear All Data</span
+                    >
+                </div>
+                <div class="link" />
+            </div>
         </div>
-        <div class="link">
-            Source Code - <a
-                href="https://github.com/siddastic/svelte-todo"
-                target="_blank">Github</a
-            >
+    {:else}
+        <div class="loading-state">
+            <div class="loading-indicator">
+                Loading...
+                <div class="crossthrough" />
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="link-row">
-        <div class="link">
-            Created By - <a href="https://github.com/siddastic" target="_blank"
-                >siddastic (Siddhant Sharma)</a
-            >
-        </div>
-        <div class="link">
-            Documentation - <a
-                href="https://github.com/siddastic/svelte-todo#readme"
-                target="_blank">View</a
-            >
-        </div>
-    </div>
-    <br />
-    <div class="link-row">
-        <div class="link">
-            Settings - <span
-                class="highlight"
-                on:click={() => {
-                    if (
-                        confirm(
-                            "All lists and their todos will be deleted\nMake sure to Export data before deleting\nAre you sure to delete?"
-                        )
-                    ) {
-                        clearAllAppData();
-                    }
-                }}>Clear All Data</span
-            >
-        </div>
-        <div class="link" />
-    </div>
+    {/if}
 </div>
 
 <style>
     .main {
         width: 70vw;
         color: #b6b6b9;
+        position: relative;
     }
     .body {
         min-height: 400px;
@@ -137,5 +156,43 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+    .loading-state {
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .loading-indicator {
+        position: relative;
+        font-family: "Roboto", cursive;
+        font-size: 35px;
+    }
+    .crossthrough {
+        width: 0%;
+        height: 2px;
+        background-color: white;
+        position: absolute;
+        top: 19.5px;
+        /* right: 0; */
+        animation: indicator-anim 1.4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+    }
+    @keyframes indicator-anim {
+        0% {
+            width: 0%;
+            left: 0;
+        }
+        50%{
+            width: 100%;
+            left: 0;
+        }
+        75%{
+            width: 100%;
+            right: 0;
+        }
+        100% {
+            width: 0%;
+            right: 0;
+        }
     }
 </style>

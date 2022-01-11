@@ -9,3 +9,5 @@ export const MainDataStore = writable<TodoList>(localStorage.getItem(DEFAULT_STO
 
 
 export const OpenedListId = writable<number | string | Empty>(null);
+
+export const AppLoaded = writable<boolean>(false);

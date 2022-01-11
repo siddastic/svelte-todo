@@ -120,7 +120,12 @@
                         }}>Clear All Data</span
                     >
                 </div>
-                <div class="link" />
+                <div class="link">
+                    UI Inspiration - <a
+                        href="https://dribbble.com/shots/15185058-Collection-Tasks"
+                        target="_blank">Collection Tasks by Oliver Cederborg</a
+                    >
+                </div>
             </div>
         </div>
     {:else}
@@ -182,11 +187,11 @@
             width: 0%;
             left: 0;
         }
-        50%{
+        50% {
             width: 100%;
             left: 0;
         }
-        75%{
+        75% {
             width: 100%;
             right: 0;
         }

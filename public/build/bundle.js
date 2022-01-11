@@ -11762,7 +11762,7 @@ var app = (function () {
     	return block;
     }
 
-    // (121:4) {:else}
+    // (126:4) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let div1;
@@ -11775,12 +11775,12 @@ var app = (function () {
     			div1 = element("div");
     			t = text("Loading...\r\n                ");
     			div0 = element("div");
-    			attr_dev(div0, "class", "crossthrough svelte-5c5std");
-    			add_location(div0, file$2, 124, 16, 4463);
-    			attr_dev(div1, "class", "loading-indicator svelte-5c5std");
-    			add_location(div1, file$2, 122, 12, 4386);
-    			attr_dev(div2, "class", "loading-state svelte-5c5std");
-    			add_location(div2, file$2, 121, 8, 4345);
+    			attr_dev(div0, "class", "crossthrough svelte-inqfyx");
+    			add_location(div0, file$2, 129, 16, 4715);
+    			attr_dev(div1, "class", "loading-indicator svelte-inqfyx");
+    			add_location(div1, file$2, 127, 12, 4638);
+    			attr_dev(div2, "class", "loading-state svelte-inqfyx");
+    			add_location(div2, file$2, 126, 8, 4597);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11798,7 +11798,7 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(121:4) {:else}",
+    		source: "(126:4) {:else}",
     		ctx
     	});
 
@@ -11860,6 +11860,8 @@ var app = (function () {
     	let span2;
     	let t32;
     	let div9;
+    	let t33;
+    	let a5;
     	let mounted;
     	let dispose;
 
@@ -11927,6 +11929,9 @@ var app = (function () {
     			span2.textContent = "Clear All Data";
     			t32 = space();
     			div9 = element("div");
+    			t33 = text("UI Inspiration - ");
+    			a5 = element("a");
+    			a5.textContent = "Collection Tasks by Oliver Cederborg";
     			attr_dev(div0, "class", "tagline");
     			add_location(div0, file$2, 50, 12, 1537);
     			add_location(br0, file$2, 51, 12, 1609);
@@ -11935,56 +11940,60 @@ var app = (function () {
     			add_location(br1, file$2, 54, 16, 1701);
     			add_location(br2, file$2, 57, 16, 1873);
     			add_location(br3, file$2, 58, 16, 1897);
-    			attr_dev(span0, "class", "highlight svelte-5c5std");
+    			attr_dev(span0, "class", "highlight svelte-inqfyx");
     			add_location(span0, file$2, 60, 16, 1947);
-    			attr_dev(span1, "class", "highlight svelte-5c5std");
+    			attr_dev(span1, "class", "highlight svelte-inqfyx");
     			add_location(span1, file$2, 64, 16, 2124);
-    			attr_dev(div1, "class", "body svelte-5c5std");
+    			attr_dev(div1, "class", "body svelte-inqfyx");
     			add_location(div1, file$2, 53, 12, 1665);
     			attr_dev(hr1, "color", "#21212b");
     			add_location(hr1, file$2, 67, 12, 2272);
     			add_location(br4, file$2, 68, 12, 2308);
     			attr_dev(a0, "href", "https://svelte.dev/");
     			attr_dev(a0, "target", "_blank");
-    			attr_dev(a0, "class", "svelte-5c5std");
+    			attr_dev(a0, "class", "svelte-inqfyx");
     			add_location(a0, file$2, 71, 32, 2420);
     			attr_dev(a1, "href", "https://www.typescriptlang.org/");
     			attr_dev(a1, "target", "_blank");
-    			attr_dev(a1, "class", "svelte-5c5std");
+    			attr_dev(a1, "class", "svelte-inqfyx");
     			add_location(a1, file$2, 75, 20, 2571);
     			attr_dev(div2, "class", "link");
     			add_location(div2, file$2, 70, 16, 2368);
     			attr_dev(a2, "href", "https://github.com/siddastic/svelte-todo");
     			attr_dev(a2, "target", "_blank");
-    			attr_dev(a2, "class", "svelte-5c5std");
+    			attr_dev(a2, "class", "svelte-inqfyx");
     			add_location(a2, file$2, 80, 34, 2787);
     			attr_dev(div3, "class", "link");
     			add_location(div3, file$2, 79, 16, 2733);
-    			attr_dev(div4, "class", "link-row svelte-5c5std");
+    			attr_dev(div4, "class", "link-row svelte-inqfyx");
     			add_location(div4, file$2, 69, 12, 2328);
     			add_location(br5, file$2, 86, 12, 2994);
     			attr_dev(a3, "href", "https://github.com/siddastic");
     			attr_dev(a3, "target", "_blank");
-    			attr_dev(a3, "class", "svelte-5c5std");
+    			attr_dev(a3, "class", "svelte-inqfyx");
     			add_location(a3, file$2, 89, 33, 3107);
     			attr_dev(div5, "class", "link");
     			add_location(div5, file$2, 88, 16, 3054);
     			attr_dev(a4, "href", "https://github.com/siddastic/svelte-todo#readme");
     			attr_dev(a4, "target", "_blank");
-    			attr_dev(a4, "class", "svelte-5c5std");
+    			attr_dev(a4, "class", "svelte-inqfyx");
     			add_location(a4, file$2, 95, 36, 3363);
     			attr_dev(div6, "class", "link");
     			add_location(div6, file$2, 94, 16, 3307);
-    			attr_dev(div7, "class", "link-row svelte-5c5std");
+    			attr_dev(div7, "class", "link-row svelte-inqfyx");
     			add_location(div7, file$2, 87, 12, 3014);
     			add_location(br6, file$2, 101, 12, 3575);
-    			attr_dev(span2, "class", "highlight svelte-5c5std");
+    			attr_dev(span2, "class", "highlight svelte-inqfyx");
     			add_location(span2, file$2, 104, 31, 3686);
     			attr_dev(div8, "class", "link");
     			add_location(div8, file$2, 103, 16, 3635);
+    			attr_dev(a5, "href", "https://dribbble.com/shots/15185058-Collection-Tasks");
+    			attr_dev(a5, "target", "_blank");
+    			attr_dev(a5, "class", "svelte-inqfyx");
+    			add_location(a5, file$2, 118, 37, 4323);
     			attr_dev(div9, "class", "link");
     			add_location(div9, file$2, 117, 16, 4266);
-    			attr_dev(div10, "class", "link-row svelte-5c5std");
+    			attr_dev(div10, "class", "link-row svelte-inqfyx");
     			add_location(div10, file$2, 102, 12, 3595);
     			attr_dev(div11, "class", "loaded-content");
     			add_location(div11, file$2, 49, 8, 1495);
@@ -12043,6 +12052,8 @@ var app = (function () {
     			append_dev(div8, span2);
     			append_dev(div10, t32);
     			append_dev(div10, div9);
+    			append_dev(div9, t33);
+    			append_dev(div9, a5);
 
     			if (!mounted) {
     				dispose = [
@@ -12106,9 +12117,9 @@ var app = (function () {
 
     			t = space();
     			if_block.c();
-    			attr_dev(div0, "class", "title svelte-5c5std");
+    			attr_dev(div0, "class", "title svelte-inqfyx");
     			add_location(div0, file$2, 43, 4, 1303);
-    			attr_dev(div1, "class", "main svelte-5c5std");
+    			attr_dev(div1, "class", "main svelte-inqfyx");
     			add_location(div1, file$2, 42, 0, 1269);
     		},
     		l: function claim(nodes) {

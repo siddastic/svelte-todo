@@ -3,7 +3,7 @@
     import Checkmark24 from "carbon-icons-svelte/lib/Checkmark24";
     import { MainDataStore, OpenedListId } from "../stores/stores";
     import { v4 as uuidv4 } from "uuid";
-    import { removeItem } from "../api/helpers";
+    import { removeItem, saveCurrentStoreDataToLocalStorage } from "../api/helpers";
     import Close24 from "carbon-icons-svelte/lib/Close24";
 
     let newTask = "";
@@ -34,6 +34,7 @@
             return newData;
         });
         newTask = "";
+        saveCurrentStoreDataToLocalStorage();
     };
 
     const handleEnterPress = (k: KeyboardEvent) => {

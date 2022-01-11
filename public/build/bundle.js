@@ -5011,8 +5011,7 @@ var app = (function () {
         return { set, update, subscribe };
     }
 
-    const addListModal = writable(null);
-    const MainDataStore = writable({
+    const DATASTORE_TEMPLATE = {
         appVersion: "0.0.1",
         exportDataVersion: 1,
         titles: [
@@ -5075,7 +5074,54 @@ var app = (function () {
                 list: [],
             }
         ],
-    });
+    };
+
+    const DEFAULT_STORAGE_KEY = "svelte-todo-maindatastore";
+    function removeItem(arr, value) {
+        const index = arr.indexOf(value);
+        if (index > -1) {
+            arr.splice(index, 1);
+        }
+        return arr;
+    }
+    const importData = () => {
+        var input = document.createElement("input");
+        input.type = "file";
+        input.style.display = "none";
+        document.body.appendChild(input);
+        input.addEventListener("change", function () {
+            var fr = new FileReader();
+            fr.onload = function () {
+                const result = fr.result;
+                try {
+                    const parsed = JSON.parse(result.toString());
+                    MainDataStore.update(() => parsed);
+                }
+                catch (error) {
+                    alert("Invalid File!\nMake sure the file was exported from this app");
+                }
+            };
+            fr.readAsText(this.files[0]);
+            input.remove();
+        });
+        input.click();
+    };
+    const saveCurrentStoreDataToLocalStorage = () => {
+        // to read value from maindatastore
+        MainDataStore.update(storeData => {
+            localStorage.setItem(DEFAULT_STORAGE_KEY, JSON.stringify(storeData));
+            return storeData;
+        });
+    };
+    const clearAllAppData = () => {
+        MainDataStore.update(() => {
+            localStorage.setItem(DEFAULT_STORAGE_KEY, JSON.stringify(DATASTORE_TEMPLATE));
+            return DATASTORE_TEMPLATE;
+        });
+    };
+
+    const addListModal = writable(null);
+    const MainDataStore = writable(localStorage.getItem(DEFAULT_STORAGE_KEY) ? JSON.parse(localStorage.getItem(DEFAULT_STORAGE_KEY)) : DATASTORE_TEMPLATE);
     const OpenedListId = writable(null);
 
     // Unique ID creation requires a high quality random # generator. In the browser we therefore
@@ -5157,7 +5203,7 @@ var app = (function () {
     const { Object: Object_1$3 } = globals;
     const file$j = "src\\components\\create_list_modal.svelte";
 
-    // (55:8) {#if !isValid() && newTitle.length > 0}
+    // (57:8) {#if !isValid() && newTitle.length > 0}
     function create_if_block$e(ctx) {
     	let t;
 
@@ -5180,7 +5226,7 @@ var app = (function () {
     		block,
     		id: create_if_block$e.name,
     		type: "if",
-    		source: "(55:8) {#if !isValid() && newTitle.length > 0}",
+    		source: "(57:8) {#if !isValid() && newTitle.length > 0}",
     		ctx
     	});
 
@@ -5226,25 +5272,25 @@ var app = (function () {
     			button1 = element("button");
     			t6 = text("Save");
     			attr_dev(div0, "class", "header svelte-15zqdsg");
-    			add_location(div0, file$j, 43, 4, 1174);
+    			add_location(div0, file$j, 45, 4, 1287);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "Enter New List Title");
     			input.autofocus = true;
     			attr_dev(input, "class", "svelte-15zqdsg");
-    			add_location(input, file$j, 46, 8, 1305);
+    			add_location(input, file$j, 48, 8, 1418);
     			attr_dev(div1, "class", "modal-content svelte-15zqdsg");
-    			add_location(div1, file$j, 44, 4, 1221);
+    			add_location(div1, file$j, 46, 4, 1334);
     			attr_dev(div2, "class", "validation-message svelte-15zqdsg");
-    			add_location(div2, file$j, 53, 4, 1479);
+    			add_location(div2, file$j, 55, 4, 1592);
     			attr_dev(button0, "class", "svelte-15zqdsg");
-    			add_location(button0, file$j, 59, 8, 1653);
+    			add_location(button0, file$j, 61, 8, 1766);
     			attr_dev(button1, "class", "primary-button svelte-15zqdsg");
     			button1.disabled = button1_disabled_value = !/*isValid*/ ctx[2]();
-    			add_location(button1, file$j, 61, 8, 1732);
+    			add_location(button1, file$j, 63, 8, 1845);
     			attr_dev(div3, "class", "modal-buttons svelte-15zqdsg");
-    			add_location(div3, file$j, 58, 4, 1616);
+    			add_location(div3, file$j, 60, 4, 1729);
     			attr_dev(div4, "class", "modal svelte-15zqdsg");
-    			add_location(div4, file$j, 42, 0, 1149);
+    			add_location(div4, file$j, 44, 0, 1262);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5352,6 +5398,8 @@ var app = (function () {
     				items: [...data.items, { key: id, list: [] }]
     			});
     		});
+
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const writable_props = [];
@@ -5369,6 +5417,7 @@ var app = (function () {
     		addListModal,
     		MainDataStore,
     		uuidv4: v4,
+    		saveCurrentStoreDataToLocalStorage,
     		newTitle,
     		message,
     		maxTitleLimit,
@@ -6470,36 +6519,6 @@ var app = (function () {
     	}
     }
 
-    function removeItem(arr, value) {
-        const index = arr.indexOf(value);
-        if (index > -1) {
-            arr.splice(index, 1);
-        }
-        return arr;
-    }
-    const importData = () => {
-        var input = document.createElement("input");
-        input.type = "file";
-        input.style.display = "none";
-        document.body.appendChild(input);
-        input.addEventListener("change", function () {
-            var fr = new FileReader();
-            fr.onload = function () {
-                const result = fr.result;
-                try {
-                    const parsed = JSON.parse(result.toString());
-                    MainDataStore.update(() => parsed);
-                }
-                catch (error) {
-                    alert("Invalid File!\nMake sure the file was exported from this app");
-                }
-            };
-            fr.readAsText(this.files[0]);
-            input.remove();
-        });
-        input.click();
-    };
-
     /* src\components\header.svelte generated by Svelte v3.44.3 */
     const file$f = "src\\components\\header.svelte";
 
@@ -6789,13 +6808,13 @@ var app = (function () {
     			t5 = space();
     			if (default_slot) default_slot.c();
     			add_location(div0, file$f, 20, 12, 839);
-    			attr_dev(div1, "class", "left svelte-1fp71ew");
+    			attr_dev(div1, "class", "left svelte-xazg9i");
     			add_location(div1, file$f, 19, 8, 807);
-    			attr_dev(div2, "class", "right svelte-1fp71ew");
+    			attr_dev(div2, "class", "right svelte-xazg9i");
     			add_location(div2, file$f, 34, 8, 1253);
-    			attr_dev(div3, "class", "header svelte-1fp71ew");
+    			attr_dev(div3, "class", "header svelte-xazg9i");
     			add_location(div3, file$f, 18, 4, 777);
-    			attr_dev(div4, "class", "nav-row svelte-1fp71ew");
+    			attr_dev(div4, "class", "nav-row svelte-xazg9i");
     			add_location(div4, file$f, 47, 4, 1648);
     			add_location(div5, file$f, 17, 0, 766);
     		},
@@ -9344,7 +9363,7 @@ var app = (function () {
     const { Object: Object_1$2 } = globals;
     const file$8 = "src\\components\\add_task_tile.svelte";
 
-    // (60:4) {#if startedTyping}
+    // (61:4) {#if startedTyping}
     function create_if_block$5(ctx) {
     	let div;
     	let current_block_type_index;
@@ -9367,7 +9386,7 @@ var app = (function () {
     			if_block.c();
     			attr_dev(div, "class", "indicator svelte-119tvgr");
     			toggle_class(div, "valid-indicator", /*isValidInput*/ ctx[1]);
-    			add_location(div, file$8, 60, 8, 2008);
+    			add_location(div, file$8, 61, 8, 2087);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9420,14 +9439,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(60:4) {#if startedTyping}",
+    		source: "(61:4) {#if startedTyping}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (64:12) {:else}
+    // (65:12) {:else}
     function create_else_block$1(ctx) {
     	let close24;
     	let current;
@@ -9463,14 +9482,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(64:12) {:else}",
+    		source: "(65:12) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:12) {#if isValidInput}
+    // (63:12) {#if isValidInput}
     function create_if_block_1$1(ctx) {
     	let checkmark24;
     	let current;
@@ -9506,7 +9525,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(62:12) {#if isValidInput}",
+    		source: "(63:12) {#if isValidInput}",
     		ctx
     	});
 
@@ -9552,16 +9571,16 @@ var app = (function () {
     			div2 = element("div");
     			t3 = text(t3_value);
     			attr_dev(div0, "class", "icon svelte-119tvgr");
-    			add_location(div0, file$8, 42, 4, 1598);
+    			add_location(div0, file$8, 43, 4, 1677);
     			attr_dev(input, "class", "content svelte-119tvgr");
     			attr_dev(input, "contenteditable", "");
     			attr_dev(input, "placeholder", "Add a task");
-    			add_location(input, file$8, 52, 4, 1806);
+    			add_location(input, file$8, 53, 4, 1885);
     			attr_dev(div1, "class", "add-task-tile row svelte-119tvgr");
-    			add_location(div1, file$8, 41, 0, 1561);
+    			add_location(div1, file$8, 42, 0, 1640);
     			attr_dev(div2, "class", "warning-message svelte-119tvgr");
     			toggle_class(div2, "warning-message-open", /*startedTyping*/ ctx[2] && !/*isValidInput*/ ctx[1]);
-    			add_location(div2, file$8, 69, 0, 2299);
+    			add_location(div2, file$8, 70, 0, 2378);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9695,6 +9714,7 @@ var app = (function () {
     		});
 
     		$$invalidate(0, newTask = "");
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const handleEnterPress = k => {
@@ -9729,6 +9749,7 @@ var app = (function () {
     		OpenedListId,
     		uuidv4: v4,
     		removeItem,
+    		saveCurrentStoreDataToLocalStorage,
     		Close24: Close24$1,
     		newTask,
     		maxCharactersLimit,
@@ -11504,33 +11525,33 @@ var app = (function () {
     			div10 = element("div");
     			div10.textContent = "Remove Completed";
     			attr_dev(div0, "class", "leading svelte-1xlnon7");
-    			add_location(div0, file$3, 53, 12, 2155);
+    			add_location(div0, file$3, 56, 12, 2320);
     			attr_dev(div1, "class", "title");
-    			add_location(div1, file$3, 56, 12, 2257);
+    			add_location(div1, file$3, 59, 12, 2422);
     			attr_dev(div2, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div2, file$3, 52, 8, 2093);
+    			add_location(div2, file$3, 55, 8, 2258);
     			attr_dev(div3, "class", "leading svelte-1xlnon7");
-    			add_location(div3, file$3, 59, 12, 2400);
+    			add_location(div3, file$3, 62, 12, 2565);
     			attr_dev(div4, "class", "title");
-    			add_location(div4, file$3, 62, 12, 2488);
+    			add_location(div4, file$3, 65, 12, 2653);
     			attr_dev(div5, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div5, file$3, 58, 8, 2318);
+    			add_location(div5, file$3, 61, 8, 2483);
     			attr_dev(div6, "class", "leading svelte-1xlnon7");
-    			add_location(div6, file$3, 65, 12, 2638);
+    			add_location(div6, file$3, 68, 12, 2803);
     			attr_dev(div7, "class", "title");
-    			add_location(div7, file$3, 68, 12, 2726);
+    			add_location(div7, file$3, 71, 12, 2891);
     			attr_dev(div8, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div8, file$3, 64, 8, 2555);
+    			add_location(div8, file$3, 67, 8, 2720);
     			attr_dev(div9, "class", "leading svelte-1xlnon7");
-    			add_location(div9, file$3, 71, 12, 2863);
+    			add_location(div9, file$3, 74, 12, 3028);
     			attr_dev(div10, "class", "title");
-    			add_location(div10, file$3, 74, 12, 2952);
+    			add_location(div10, file$3, 77, 12, 3117);
     			attr_dev(div11, "class", "dropdown-tile svelte-1xlnon7");
-    			add_location(div11, file$3, 70, 8, 2795);
+    			add_location(div11, file$3, 73, 8, 2960);
     			attr_dev(div12, "class", "dropdown-content svelte-1xlnon7");
-    			add_location(div12, file$3, 51, 4, 2053);
+    			add_location(div12, file$3, 54, 4, 2218);
     			attr_dev(div13, "class", "dropdown svelte-1xlnon7");
-    			add_location(div13, file$3, 49, 0, 2006);
+    			add_location(div13, file$3, 52, 0, 2171);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11659,6 +11680,8 @@ var app = (function () {
     			const newData = Object.assign(Object.assign({}, mainData), { items: [...oldItems, currentItem] });
     			return newData;
     		});
+
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const changeItemSelection = newState => {
@@ -11677,6 +11700,8 @@ var app = (function () {
     			const newData = Object.assign(Object.assign({}, mainData), { items: [...oldItems, currentItem] });
     			return newData;
     		});
+
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const removeCompleted = () => {
@@ -11691,6 +11716,8 @@ var app = (function () {
     			const newData = Object.assign(Object.assign({}, mainData), { items: [...oldItems, currentItem] });
     			return newData;
     		});
+
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const writable_props = [];
@@ -11712,6 +11739,7 @@ var app = (function () {
     		Select_0124: Select_0124$1,
     		TaskRemove24: TaskRemove24$1,
     		removeItem,
+    		saveCurrentStoreDataToLocalStorage,
     		MainDataStore,
     		OpenedListId,
     		clearList,
@@ -11750,14 +11778,14 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[9] = list[i];
+    	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
     // (42:8) {#each title.split("") as t}
     function create_each_block$1(ctx) {
     	let span;
-    	let t_value = /*t*/ ctx[9] + "";
+    	let t_value = /*t*/ ctx[10] + "";
     	let t;
 
     	const block = {
@@ -11765,7 +11793,7 @@ var app = (function () {
     			span = element("span");
     			t = text(t_value);
     			attr_dev(span, "class", "title-part");
-    			add_location(span, file$2, 42, 12, 1284);
+    			add_location(span, file$2, 42, 12, 1301);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -11789,7 +11817,7 @@ var app = (function () {
     }
 
     function create_fragment$2(ctx) {
-    	let div9;
+    	let div12;
     	let div0;
     	let t0;
     	let div1;
@@ -11835,7 +11863,16 @@ var app = (function () {
     	let div7;
     	let t27;
     	let a4;
-    	let div9_outro;
+    	let t29;
+    	let br6;
+    	let t30;
+    	let div11;
+    	let div9;
+    	let t31;
+    	let span2;
+    	let t33;
+    	let div10;
+    	let div12_outro;
     	let current;
     	let mounted;
     	let dispose;
@@ -11849,7 +11886,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div9 = element("div");
+    			div12 = element("div");
     			div0 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -11876,7 +11913,7 @@ var app = (function () {
     			t9 = text("\r\n        from left drawer or\r\n        ");
     			span1 = element("span");
     			span1.textContent = "Import";
-    			t11 = text(" an existing svelte-todo exported file");
+    			t11 = text(" an existing svelte-todo\r\n        exported file");
     			t12 = space();
     			hr1 = element("hr");
     			t13 = space();
@@ -11908,81 +11945,100 @@ var app = (function () {
     			t27 = text("Documentation - ");
     			a4 = element("a");
     			a4.textContent = "View";
+    			t29 = space();
+    			br6 = element("br");
+    			t30 = space();
+    			div11 = element("div");
+    			div9 = element("div");
+    			t31 = text("Settings - ");
+    			span2 = element("span");
+    			span2.textContent = "Clear All Data";
+    			t33 = space();
+    			div10 = element("div");
     			attr_dev(div0, "class", "title svelte-8au54j");
-    			add_location(div0, file$2, 40, 4, 1188);
+    			add_location(div0, file$2, 40, 4, 1205);
     			attr_dev(div1, "class", "tagline");
-    			add_location(div1, file$2, 45, 4, 1354);
-    			add_location(br0, file$2, 46, 4, 1418);
+    			add_location(div1, file$2, 45, 4, 1371);
+    			add_location(br0, file$2, 46, 4, 1435);
     			attr_dev(hr0, "color", "#21212b");
-    			add_location(hr0, file$2, 47, 4, 1430);
-    			add_location(br1, file$2, 49, 8, 1486);
-    			add_location(br2, file$2, 52, 8, 1634);
-    			add_location(br3, file$2, 53, 8, 1650);
+    			add_location(hr0, file$2, 47, 4, 1447);
+    			add_location(br1, file$2, 49, 8, 1503);
+    			add_location(br2, file$2, 52, 8, 1651);
+    			add_location(br3, file$2, 53, 8, 1667);
     			attr_dev(span0, "class", "highlight svelte-8au54j");
-    			add_location(span0, file$2, 55, 8, 1684);
+    			add_location(span0, file$2, 55, 8, 1701);
     			attr_dev(span1, "class", "highlight svelte-8au54j");
-    			add_location(span1, file$2, 59, 8, 1829);
+    			add_location(span1, file$2, 59, 8, 1846);
     			attr_dev(div2, "class", "body svelte-8au54j");
-    			add_location(div2, file$2, 48, 4, 1458);
+    			add_location(div2, file$2, 48, 4, 1475);
     			attr_dev(hr1, "color", "#21212b");
-    			add_location(hr1, file$2, 61, 4, 1944);
-    			add_location(br4, file$2, 62, 4, 1972);
+    			add_location(hr1, file$2, 62, 4, 1970);
+    			add_location(br4, file$2, 63, 4, 1998);
     			attr_dev(a0, "href", "https://svelte.dev/");
     			attr_dev(a0, "target", "_blank");
     			attr_dev(a0, "class", "svelte-8au54j");
-    			add_location(a0, file$2, 65, 24, 2060);
+    			add_location(a0, file$2, 66, 24, 2086);
     			attr_dev(a1, "href", "https://www.typescriptlang.org/");
     			attr_dev(a1, "target", "_blank");
     			attr_dev(a1, "class", "svelte-8au54j");
-    			add_location(a1, file$2, 67, 12, 2147);
+    			add_location(a1, file$2, 68, 12, 2173);
     			attr_dev(div3, "class", "link");
-    			add_location(div3, file$2, 64, 8, 2016);
+    			add_location(div3, file$2, 65, 8, 2042);
     			attr_dev(a2, "href", "https://github.com/siddastic/svelte-todo");
     			attr_dev(a2, "target", "_blank");
     			attr_dev(a2, "class", "svelte-8au54j");
-    			add_location(a2, file$2, 72, 26, 2323);
+    			add_location(a2, file$2, 73, 26, 2349);
     			attr_dev(div4, "class", "link");
-    			add_location(div4, file$2, 71, 8, 2277);
+    			add_location(div4, file$2, 72, 8, 2303);
     			attr_dev(div5, "class", "link-row svelte-8au54j");
-    			add_location(div5, file$2, 63, 4, 1984);
-    			add_location(br5, file$2, 78, 4, 2482);
+    			add_location(div5, file$2, 64, 4, 2010);
+    			add_location(br5, file$2, 79, 4, 2508);
     			attr_dev(a3, "href", "https://github.com/siddastic");
     			attr_dev(a3, "target", "_blank");
     			attr_dev(a3, "class", "svelte-8au54j");
-    			add_location(a3, file$2, 81, 25, 2571);
+    			add_location(a3, file$2, 82, 25, 2597);
     			attr_dev(div6, "class", "link");
-    			add_location(div6, file$2, 80, 8, 2526);
+    			add_location(div6, file$2, 81, 8, 2552);
     			attr_dev(a4, "href", "https://github.com/siddastic/svelte-todo#readme");
     			attr_dev(a4, "target", "_blank");
     			attr_dev(a4, "class", "svelte-8au54j");
-    			add_location(a4, file$2, 86, 28, 2763);
+    			add_location(a4, file$2, 87, 28, 2789);
     			attr_dev(div7, "class", "link");
-    			add_location(div7, file$2, 85, 8, 2715);
+    			add_location(div7, file$2, 86, 8, 2741);
     			attr_dev(div8, "class", "link-row svelte-8au54j");
-    			add_location(div8, file$2, 79, 4, 2494);
-    			attr_dev(div9, "class", "main svelte-8au54j");
-    			add_location(div9, file$2, 39, 0, 1154);
+    			add_location(div8, file$2, 80, 4, 2520);
+    			add_location(br6, file$2, 93, 4, 2953);
+    			attr_dev(span2, "class", "highlight svelte-8au54j");
+    			add_location(span2, file$2, 96, 23, 3040);
+    			attr_dev(div9, "class", "link");
+    			add_location(div9, file$2, 95, 8, 2997);
+    			attr_dev(div10, "class", "link");
+    			add_location(div10, file$2, 109, 8, 3516);
+    			attr_dev(div11, "class", "link-row svelte-8au54j");
+    			add_location(div11, file$2, 94, 4, 2965);
+    			attr_dev(div12, "class", "main svelte-8au54j");
+    			add_location(div12, file$2, 39, 0, 1171);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div9, anchor);
-    			append_dev(div9, div0);
+    			insert_dev(target, div12, anchor);
+    			append_dev(div12, div0);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div0, null);
     			}
 
     			/*div0_binding*/ ctx[3](div0);
-    			append_dev(div9, t0);
-    			append_dev(div9, div1);
-    			append_dev(div9, t2);
-    			append_dev(div9, br0);
-    			append_dev(div9, t3);
-    			append_dev(div9, hr0);
-    			append_dev(div9, t4);
-    			append_dev(div9, div2);
+    			append_dev(div12, t0);
+    			append_dev(div12, div1);
+    			append_dev(div12, t2);
+    			append_dev(div12, br0);
+    			append_dev(div12, t3);
+    			append_dev(div12, hr0);
+    			append_dev(div12, t4);
+    			append_dev(div12, div2);
     			append_dev(div2, br1);
     			append_dev(div2, t5);
     			append_dev(div2, br2);
@@ -11993,12 +12049,12 @@ var app = (function () {
     			append_dev(div2, t9);
     			append_dev(div2, span1);
     			append_dev(div2, t11);
-    			append_dev(div9, t12);
-    			append_dev(div9, hr1);
-    			append_dev(div9, t13);
-    			append_dev(div9, br4);
-    			append_dev(div9, t14);
-    			append_dev(div9, div5);
+    			append_dev(div12, t12);
+    			append_dev(div12, hr1);
+    			append_dev(div12, t13);
+    			append_dev(div12, br4);
+    			append_dev(div12, t14);
+    			append_dev(div12, div5);
     			append_dev(div5, div3);
     			append_dev(div3, t15);
     			append_dev(div3, a0);
@@ -12008,10 +12064,10 @@ var app = (function () {
     			append_dev(div5, div4);
     			append_dev(div4, t20);
     			append_dev(div4, a2);
-    			append_dev(div9, t22);
-    			append_dev(div9, br5);
-    			append_dev(div9, t23);
-    			append_dev(div9, div8);
+    			append_dev(div12, t22);
+    			append_dev(div12, br5);
+    			append_dev(div12, t23);
+    			append_dev(div12, div8);
     			append_dev(div8, div6);
     			append_dev(div6, t24);
     			append_dev(div6, a3);
@@ -12019,12 +12075,22 @@ var app = (function () {
     			append_dev(div8, div7);
     			append_dev(div7, t27);
     			append_dev(div7, a4);
+    			append_dev(div12, t29);
+    			append_dev(div12, br6);
+    			append_dev(div12, t30);
+    			append_dev(div12, div11);
+    			append_dev(div11, div9);
+    			append_dev(div9, t31);
+    			append_dev(div9, span2);
+    			append_dev(div11, t33);
+    			append_dev(div11, div10);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
     					listen_dev(span0, "click", /*click_handler*/ ctx[4], false, false, false),
-    					listen_dev(span1, "click", importData, false, false, false)
+    					listen_dev(span1, "click", importData, false, false, false),
+    					listen_dev(span2, "click", /*click_handler_1*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
@@ -12057,18 +12123,18 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
-    			if (div9_outro) div9_outro.end(1);
+    			if (div12_outro) div12_outro.end(1);
     			current = true;
     		},
     		o: function outro(local) {
-    			div9_outro = create_out_transition(div9, slide, {});
+    			div12_outro = create_out_transition(div12, slide, {});
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div9);
+    			if (detaching) detach_dev(div12);
     			destroy_each(each_blocks, detaching);
     			/*div0_binding*/ ctx[3](null);
-    			if (detaching && div9_outro) div9_outro.end();
+    			if (detaching && div12_outro) div12_outro.end();
     			mounted = false;
     			run_all(dispose);
     		}
@@ -12132,6 +12198,12 @@ var app = (function () {
 
     	const click_handler = () => showAddModal();
 
+    	const click_handler_1 = () => {
+    		if (confirm("All lists and their todos will be deleted\nMake sure to Export data before deleting\nAre you sure to delete?")) {
+    			clearAllAppData();
+    		}
+    	};
+
     	$$self.$capture_state = () => ({
     		onDestroy,
     		onMount,
@@ -12139,6 +12211,7 @@ var app = (function () {
     		bind,
     		slide,
     		CreateListModal: Create_list_modal,
+    		clearAllAppData,
     		importData,
     		title,
     		titleElement,
@@ -12161,7 +12234,14 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [titleElement, title, showAddModal, div0_binding, click_handler];
+    	return [
+    		titleElement,
+    		title,
+    		showAddModal,
+    		div0_binding,
+    		click_handler,
+    		click_handler_1
+    	];
     }
 
     class Default_view extends SvelteComponentDev {
@@ -12189,7 +12269,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (90:4) {:else}
+    // (92:4) {:else}
     function create_else_block(ctx) {
     	let defaultview;
     	let current;
@@ -12222,14 +12302,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(90:4) {:else}",
+    		source: "(92:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:4) {#if isAnyListOpen}
+    // (53:4) {#if isAnyListOpen}
     function create_if_block(ctx) {
     	let div4;
     	let div3;
@@ -12327,22 +12407,22 @@ var app = (function () {
     			t13 = space();
     			if (if_block) if_block.c();
     			attr_dev(div0, "class", "icon svelte-c7xk5u");
-    			add_location(div0, file$1, 54, 20, 2382);
+    			add_location(div0, file$1, 56, 20, 2504);
     			attr_dev(div1, "class", "title row svelte-c7xk5u");
-    			add_location(div1, file$1, 53, 16, 2337);
+    			add_location(div1, file$1, 55, 16, 2459);
     			attr_dev(div2, "class", "options");
-    			add_location(div2, file$1, 60, 16, 2611);
+    			add_location(div2, file$1, 62, 16, 2733);
     			attr_dev(div3, "class", "header row svelte-c7xk5u");
-    			add_location(div3, file$1, 52, 12, 2295);
-    			add_location(br0, file$1, 66, 12, 2817);
-    			add_location(br1, file$1, 68, 12, 2866);
-    			add_location(br2, file$1, 69, 12, 2886);
+    			add_location(div3, file$1, 54, 12, 2417);
+    			add_location(br0, file$1, 68, 12, 2939);
+    			add_location(br1, file$1, 70, 12, 2988);
+    			add_location(br2, file$1, 71, 12, 3008);
     			set_style(span, "font-weight", "500");
-    			add_location(span, file$1, 70, 12, 2906);
-    			add_location(br3, file$1, 71, 12, 2981);
-    			add_location(br4, file$1, 72, 12, 3001);
+    			add_location(span, file$1, 72, 12, 3028);
+    			add_location(br3, file$1, 73, 12, 3103);
+    			add_location(br4, file$1, 74, 12, 3123);
     			attr_dev(div4, "class", "content svelte-c7xk5u");
-    			add_location(div4, file$1, 51, 8, 2260);
+    			add_location(div4, file$1, 53, 8, 2382);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div4, anchor);
@@ -12466,14 +12546,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(51:4) {#if isAnyListOpen}",
+    		source: "(53:4) {#if isAnyListOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:20) <ListDropdown>
+    // (64:20) <ListDropdown>
     function create_default_slot$1(ctx) {
     	let overflowmenuhorizontal24;
     	let current;
@@ -12505,14 +12585,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(62:20) <ListDropdown>",
+    		source: "(64:20) <ListDropdown>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:12) {#each items as item (item.id)}
+    // (76:12) {#each items as item (item.id)}
     function create_each_block(key_1, ctx) {
     	let first;
     	let listitemtile;
@@ -12576,14 +12656,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(74:12) {#each items as item (item.id)}",
+    		source: "(76:12) {#each items as item (item.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:12) {#if items.length == 0}
+    // (86:12) {#if items.length == 0}
     function create_if_block_1(ctx) {
     	let div;
     	let div_intro;
@@ -12593,7 +12673,7 @@ var app = (function () {
     			div = element("div");
     			div.textContent = "No todos yet add new tasks from above";
     			attr_dev(div, "class", "no-todos-state svelte-c7xk5u");
-    			add_location(div, file$1, 84, 16, 3472);
+    			add_location(div, file$1, 86, 16, 3594);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -12616,7 +12696,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(84:12) {#if items.length == 0}",
+    		source: "(86:12) {#if items.length == 0}",
     		ctx
     	});
 
@@ -12644,7 +12724,7 @@ var app = (function () {
     			div = element("div");
     			if_block.c();
     			attr_dev(div, "class", "list-body svelte-c7xk5u");
-    			add_location(div, file$1, 49, 0, 2202);
+    			add_location(div, file$1, 51, 0, 2324);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12740,6 +12820,8 @@ var app = (function () {
     			const newData = Object.assign(Object.assign({}, mainData), { items: [...oldItems, currentItem] });
     			return newData;
     		});
+
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const deleteTask = id => {
@@ -12756,6 +12838,8 @@ var app = (function () {
     			const newData = Object.assign(Object.assign({}, mainData), { items: [...oldItems, currentItem] });
     			return newData;
     		});
+
+    		saveCurrentStoreDataToLocalStorage();
     	};
 
     	const closeList = () => {
@@ -12786,6 +12870,7 @@ var app = (function () {
     		fade,
     		ListDropdown: List_dropdown,
     		removeItem,
+    		saveCurrentStoreDataToLocalStorage,
     		DefaultView: Default_view,
     		changeTaskState,
     		deleteTask,

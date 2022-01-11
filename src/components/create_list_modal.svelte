@@ -2,6 +2,7 @@
     import { addListModal, MainDataStore } from "../stores/stores";
     import { v4 as uuidv4 } from "uuid";
     import type { TodoList } from "../interfaces/global";
+import { saveCurrentStoreDataToLocalStorage } from "../api/helpers";
 
     let newTitle: string = "";
     let message: string = "";
@@ -47,6 +48,7 @@
                 ],
             };
         });
+        saveCurrentStoreDataToLocalStorage();
     };
 </script>
 

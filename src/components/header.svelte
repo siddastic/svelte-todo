@@ -9,7 +9,7 @@
 
     import Drawer from "./drawer.svelte";
     import { MainDataStore } from "../stores/stores";
-import { importData } from "../api/helpers";
+    import { importData } from "../api/helpers";
 
     let navVisible = true;
 
@@ -77,7 +77,7 @@ import { importData } from "../api/helpers";
         align-items: center;
     }
 
-    .right{
+    .right {
         display: flex;
         flex-direction: row;
     }

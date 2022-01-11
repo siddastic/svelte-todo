@@ -5,7 +5,7 @@
     import TaskRemove24 from "carbon-icons-svelte/lib/TaskRemove24";
 
 
-    import { removeItem } from "../api/helpers";
+    import { removeItem, saveCurrentStoreDataToLocalStorage } from "../api/helpers";
     import { MainDataStore, OpenedListId } from "../stores/stores";
 
     const clearList = () => {
@@ -21,6 +21,7 @@
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;
         });
+        saveCurrentStoreDataToLocalStorage();
     };
     const changeItemSelection = (newState: boolean) => {
         MainDataStore.update((data) => {
@@ -35,6 +36,7 @@
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;
         });
+        saveCurrentStoreDataToLocalStorage();
     };
     const removeCompleted = () => {
         MainDataStore.update((data) => {
@@ -48,6 +50,7 @@
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;
         });
+        saveCurrentStoreDataToLocalStorage();
     };
 </script>
 

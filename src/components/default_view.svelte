@@ -4,7 +4,7 @@
     import { bind } from "svelte-simple-modal";
     import { slide } from "svelte/transition";
     import CreateListModal from "./create_list_modal.svelte";
-import { importData } from "../api/helpers";
+    import { clearAllAppData, importData } from "../api/helpers";
 
     let title = "Svelte Todo";
     let titleElement: HTMLElement;
@@ -61,7 +61,8 @@ import { importData } from "../api/helpers";
             >Creating a New list</span
         >
         from left drawer or
-        <span class="highlight" on:click={importData}>Import</span> an existing svelte-todo exported file
+        <span class="highlight" on:click={importData}>Import</span> an existing svelte-todo
+        exported file
     </div>
     <hr color="#21212b" />
     <br />
@@ -93,6 +94,24 @@ import { importData } from "../api/helpers";
                 target="_blank">View</a
             >
         </div>
+    </div>
+    <br />
+    <div class="link-row">
+        <div class="link">
+            Settings - <span
+                class="highlight"
+                on:click={() => {
+                    if (
+                        confirm(
+                            "All lists and their todos will be deleted\nMake sure to Export data before deleting\nAre you sure to delete?"
+                        )
+                    ) {
+                        clearAllAppData();
+                    }
+                }}>Clear All Data</span
+            >
+        </div>
+        <div class="link" />
     </div>
 </div>
 

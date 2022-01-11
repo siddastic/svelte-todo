@@ -6,7 +6,7 @@
     import { MainDataStore, OpenedListId } from "../stores/stores";
     import { fade } from "svelte/transition";
     import ListDropdown from "./list-dropdown.svelte";
-    import { removeItem } from "../api/helpers";
+    import { removeItem, saveCurrentStoreDataToLocalStorage } from "../api/helpers";
     import DefaultView from "./default_view.svelte";
 
     $: listId = $OpenedListId;
@@ -32,6 +32,7 @@
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;
         });
+        saveCurrentStoreDataToLocalStorage();
     };
     const deleteTask = (id) => {
         MainDataStore.update((data) => {
@@ -47,6 +48,7 @@
             const newData = { ...mainData, items: [...oldItems, currentItem] };
             return newData;
         });
+        saveCurrentStoreDataToLocalStorage();
     };
     const closeList = () =>{
         OpenedListId.update(()=>{

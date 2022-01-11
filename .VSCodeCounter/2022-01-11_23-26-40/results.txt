@@ -1,0 +1,46 @@
+Date : 2022-01-11 23:26:40
+Directory : c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src
+Total : 17 files,  1116 codes, 3 comments, 87 blanks, all 1206 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Svelte     |         11 |      1,025 |          1 |         64 |      1,090 |
+| TypeScript |          6 |         91 |          2 |         23 |        116 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                          |         17 |      1,116 |          3 |         87 |      1,206 |
+| api                                                                                        |          2 |         53 |          1 |         12 |         66 |
+| components                                                                                 |         10 |      1,002 |          1 |         62 |      1,065 |
+| interfaces                                                                                 |          1 |         22 |          0 |          4 |         26 |
+| stores                                                                                     |          1 |          8 |          0 |          5 |         13 |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                   | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\App.svelte                          | Svelte     |         23 |          0 |          2 |         25 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\api\helpers.ts                      | TypeScript |         43 |          1 |          8 |         52 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\api\maindatastore_template.ts       | TypeScript |         10 |          0 |          4 |         14 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\add_task_tile.svelte     | Svelte     |        136 |          0 |          8 |        144 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\create_list_modal.svelte | Svelte     |        124 |          1 |          7 |        132 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\default_view.svelte      | Svelte     |        191 |          0 |          8 |        199 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\drawer-item.svelte       | Svelte     |         43 |          0 |          4 |         47 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\drawer.svelte            | Svelte     |         67 |          0 |          7 |         74 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\header.svelte            | Svelte     |         82 |          0 |          8 |         90 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\icon_row.svelte          | Svelte     |         12 |          0 |          1 |         13 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\list-body.svelte         | Svelte     |        144 |          0 |          4 |        148 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\list-dropdown.svelte     | Svelte     |        111 |          0 |          9 |        120 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\components\list-item-tile.svelte    | Svelte     |         92 |          0 |          6 |         98 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\global.d.ts                         | TypeScript |          0 |          1 |          0 |          1 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\interfaces\global.ts                | TypeScript |         22 |          0 |          4 |         26 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\main.ts                             | TypeScript |          8 |          0 |          2 |         10 |
+| c:\Users\Akshat\Documents\svelte_stuff\svelte-todo\src\stores\stores.ts                    | TypeScript |          8 |          0 |          5 |         13 |
+| Total                                                                                      |            |      1,116 |          3 |         87 |      1,206 |
++--------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

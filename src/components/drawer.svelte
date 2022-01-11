@@ -1,5 +1,6 @@
 <script lang="ts">
     import Add24 from "carbon-icons-svelte/lib/Add24";
+import { onDestroy } from "svelte";
     import { bind } from "svelte-simple-modal";
     import { fade } from "svelte/transition";
     import {
@@ -16,7 +17,11 @@
         // @ts-ignore
         addListModal.set(bind(CreateListModal));
 
-    let openedTileId = $OpenedListId;
+    let openedTileId;
+
+    const unsubscribe = OpenedListId.subscribe(value=>{
+        openedTileId = value;
+    });
 
     const openTodo = (id) => {
         console.log(id);
@@ -26,6 +31,8 @@
         console.log($MainDataStore);
         openedTileId = id;
     };
+
+    onDestroy(unsubscribe);
 </script>
 
 <div class="drawer" class:open>

@@ -5146,7 +5146,7 @@ var app = (function () {
     const { Object: Object_1$3 } = globals;
     const file$j = "src\\components\\create_list_modal.svelte";
 
-    // (57:8) {#if !isValid() && newTitle.length > 0}
+    // (65:8) {#if !isValid() && newTitle.length > 0}
     function create_if_block$f(ctx) {
     	let t;
 
@@ -5169,7 +5169,7 @@ var app = (function () {
     		block,
     		id: create_if_block$f.name,
     		type: "if",
-    		source: "(57:8) {#if !isValid() && newTitle.length > 0}",
+    		source: "(65:8) {#if !isValid() && newTitle.length > 0}",
     		ctx
     	});
 
@@ -5215,25 +5215,25 @@ var app = (function () {
     			button1 = element("button");
     			t6 = text("Save");
     			attr_dev(div0, "class", "header svelte-15zqdsg");
-    			add_location(div0, file$j, 45, 4, 1287);
+    			add_location(div0, file$j, 52, 4, 1425);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "Enter New List Title");
     			input.autofocus = true;
     			attr_dev(input, "class", "svelte-15zqdsg");
-    			add_location(input, file$j, 48, 8, 1418);
+    			add_location(input, file$j, 55, 8, 1556);
     			attr_dev(div1, "class", "modal-content svelte-15zqdsg");
-    			add_location(div1, file$j, 46, 4, 1334);
+    			add_location(div1, file$j, 53, 4, 1472);
     			attr_dev(div2, "class", "validation-message svelte-15zqdsg");
-    			add_location(div2, file$j, 55, 4, 1592);
+    			add_location(div2, file$j, 63, 4, 1773);
     			attr_dev(button0, "class", "svelte-15zqdsg");
-    			add_location(button0, file$j, 61, 8, 1766);
+    			add_location(button0, file$j, 69, 8, 1947);
     			attr_dev(button1, "class", "primary-button svelte-15zqdsg");
     			button1.disabled = button1_disabled_value = !/*isValid*/ ctx[2]();
-    			add_location(button1, file$j, 63, 8, 1845);
+    			add_location(button1, file$j, 71, 8, 2026);
     			attr_dev(div3, "class", "modal-buttons svelte-15zqdsg");
-    			add_location(div3, file$j, 60, 4, 1729);
+    			add_location(div3, file$j, 68, 4, 1910);
     			attr_dev(div4, "class", "modal svelte-15zqdsg");
-    			add_location(div4, file$j, 44, 0, 1262);
+    			add_location(div4, file$j, 51, 0, 1400);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5258,7 +5258,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[5]),
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[6]),
+    					listen_dev(input, "keydown", /*handleEnterPress*/ ctx[5], false, false, false),
     					listen_dev(button0, "click", /*closeModal*/ ctx[3], false, false, false),
     					listen_dev(button1, "click", /*saveTitle*/ ctx[4], false, false, false)
     				];
@@ -5345,6 +5346,14 @@ var app = (function () {
     		saveCurrentStoreDataToLocalStorage();
     	};
 
+    	const handleEnterPress = k => {
+    		if (k.key == "Enter") {
+    			if (isValid()) {
+    				saveTitle();
+    			}
+    		}
+    	};
+
     	const writable_props = [];
 
     	Object_1$3.keys($$props).forEach(key => {
@@ -5366,13 +5375,14 @@ var app = (function () {
     		maxTitleLimit,
     		closeModal,
     		saveTitle,
+    		handleEnterPress,
     		isValid
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('newTitle' in $$props) $$invalidate(0, newTitle = $$props.newTitle);
     		if ('message' in $$props) $$invalidate(1, message = $$props.message);
-    		if ('maxTitleLimit' in $$props) $$invalidate(6, maxTitleLimit = $$props.maxTitleLimit);
+    		if ('maxTitleLimit' in $$props) $$invalidate(7, maxTitleLimit = $$props.maxTitleLimit);
     		if ('isValid' in $$props) $$invalidate(2, isValid = $$props.isValid);
     	};
 
@@ -5400,7 +5410,15 @@ var app = (function () {
     		}
     	};
 
-    	return [newTitle, message, isValid, closeModal, saveTitle, input_input_handler];
+    	return [
+    		newTitle,
+    		message,
+    		isValid,
+    		closeModal,
+    		saveTitle,
+    		handleEnterPress,
+    		input_input_handler
+    	];
     }
 
     class Create_list_modal extends SvelteComponentDev {

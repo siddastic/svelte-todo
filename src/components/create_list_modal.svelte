@@ -50,6 +50,14 @@ import { saveCurrentStoreDataToLocalStorage } from "../api/helpers";
         });
         saveCurrentStoreDataToLocalStorage();
     };
+
+    const handleEnterPress = (k: KeyboardEvent) => {
+        if (k.key == "Enter") {
+            if (isValid()) {
+                saveTitle();
+            }
+        }
+    };
 </script>
 
 <div class="modal">
@@ -61,6 +69,7 @@ import { saveCurrentStoreDataToLocalStorage } from "../api/helpers";
             placeholder="Enter New List Title"
             bind:value={newTitle}
             autofocus={true}
+            on:keydown={handleEnterPress}
         />
     </div>
     <div class="validation-message">

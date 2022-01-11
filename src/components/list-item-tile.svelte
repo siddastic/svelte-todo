@@ -12,29 +12,37 @@
         completed = !completed;
         dispatch("change-state", completed);
     };
+
+    const handleDelete = () => {
+        dispatch("delete");
+    };
 </script>
 
-<div class="list-tile" on:click={handleTileSelect} in:scale out:slide>
-    <div class="leading" class:filled={completed}>
-        {#if completed}
-            <Checkmark24 style="fill : #17181f" />
-        {/if}
+<div class="list-tile row" on:click={handleTileSelect} in:scale out:slide>
+    <div class="row">
+        <div class="leading" class:filled={completed}>
+            {#if completed}
+                <Checkmark24 style="fill : #17181f" />
+            {/if}
+        </div>
+        &nbsp; &nbsp;
+        <div class="title" class:completed-title-color={completed}>
+            {title}
+            <div class="crossthrough" class:crossthrough-completed={completed} />
+        </div>
     </div>
-    &nbsp; &nbsp;
-    <div class="title" class:completed-title-color={completed}>
-        {title}
-        <div class="crossthrough" class:crossthrough-completed={completed} />
-    </div>
-    <div class="trailing">
+    <div class="trailing" on:click={handleDelete}>
         <Delete24 style = "fill : tomato"/>
     </div>
 </div>
 
 <style>
-    .list-tile {
+    .row{
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+    .list-tile {
         background-color: #21212b;
         padding: 16px;
         border-radius: 20px;
@@ -42,6 +50,7 @@
         font-weight: 500;
         margin-bottom: 20px;
         user-select: none;
+        justify-content: space-between;
     }
     .leading {
         display: flex;
@@ -61,7 +70,6 @@
         position: relative;
         color: white;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        flex: 1;
     }
     .trailing{
         opacity: 0;

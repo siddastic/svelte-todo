@@ -28,6 +28,21 @@
             return newData;
         });
     };
+    const deleteTask = (id) => {
+        MainDataStore.update((data) => {
+            const mainData = data;
+            const oldItems = mainData.items;
+            const currentItem = mainData.items.filter((e) => {
+                return e.key == $OpenedListId;
+            })[0];
+            let itemIndex = currentItem.list.indexOf(
+                currentItem.list.filter((e) => e.id == id)[0]
+            );
+            currentItem.list.splice(itemIndex, 1);
+            const newData = { ...mainData, items: [...oldItems, currentItem] };
+            return newData;
+        });
+    };
 </script>
 
 <div class="list-body">
@@ -59,6 +74,7 @@
                     on:change-state={(newState) => {
                         changeTaskState(item.id, newState.detail);
                     }}
+                    on:delete={()=>deleteTask(item.id)}
                 />
             {/each}
             {#if items.length == 0}

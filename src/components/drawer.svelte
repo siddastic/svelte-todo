@@ -52,7 +52,7 @@
         z-index: 0;
         background-color: #21212b;
         width: 0px;
-        height: 93vh;
+        height: 94vh;
         transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         display: flex;
         flex-direction: column;

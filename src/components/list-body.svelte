@@ -73,11 +73,13 @@
 <style>
     .list-body {
         width: 100%;
-        height: 93vh;
+        height: 86vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 7vh;
+        overflow-y: scroll;
+        max-height: 86vh;
     }
     .content {
         width: 50%;

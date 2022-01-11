@@ -48,6 +48,11 @@
             return newData;
         });
     };
+    const closeList = () =>{
+        OpenedListId.update(()=>{
+            return null;
+        });
+    };
 </script>
 
 <div class="list-body">
@@ -55,7 +60,7 @@
         <div class="content">
             <div class="header row">
                 <div class="title row">
-                    <div class="icon">
+                    <div class="icon" on:click={closeList}>
                         <ChevronLeft24 />
                     </div>
                     &nbsp; &nbsp;

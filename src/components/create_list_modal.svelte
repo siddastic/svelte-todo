@@ -53,6 +53,7 @@
 <div class="modal">
     <div class="header">Create New List</div>
     <div class="modal-content">
+        <!-- svelte-ignore a11y-autofocus -->
         <input
             type="text"
             placeholder="Enter New List Title"

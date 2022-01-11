@@ -2,6 +2,8 @@
     import CheckmarkOutlineWarning24 from "carbon-icons-svelte/lib/CheckmarkOutlineWarning24";
     import Select_0224 from "carbon-icons-svelte/lib/Select_0224";
     import Select_0124 from "carbon-icons-svelte/lib/Select_0124";
+    import TaskRemove24 from "carbon-icons-svelte/lib/TaskRemove24";
+
 
     import { removeItem } from "../api/helpers";
     import { MainDataStore, OpenedListId } from "../stores/stores";
@@ -34,6 +36,19 @@
             return newData;
         });
     };
+    const removeCompleted = () => {
+        MainDataStore.update((data) => {
+            const mainData = data;
+            const oldItems = mainData.items;
+            const currentItem = mainData.items.filter((e) => {
+                return e.key == $OpenedListId;
+            })[0];
+            let toRemoveAtIndexes = [];
+            currentItem.list = currentItem.list.filter(cur=>!cur.completed);
+            const newData = { ...mainData, items: [...oldItems, currentItem] };
+            return newData;
+        });
+    };
 </script>
 
 <div class="dropdown">
@@ -56,6 +71,12 @@
                 <Select_0224 />
             </div>
             <div class="title">Unselect all items</div>
+        </div>
+        <div class="dropdown-tile" on:click={removeCompleted}>
+            <div class="leading">
+                <TaskRemove24 />
+            </div>
+            <div class="title">Remove Completed</div>
         </div>
     </div>
 </div>

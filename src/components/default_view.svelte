@@ -2,7 +2,7 @@
     import { onDestroy, onMount } from "svelte";
     import { addListModal } from "../stores/stores";
     import { bind } from "svelte-simple-modal";
-    import { fade,slide } from "svelte/transition";
+    import { slide } from "svelte/transition";
     import CreateListModal from "./create_list_modal.svelte";
 
     let title = "Svelte Todo";

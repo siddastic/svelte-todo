@@ -29,6 +29,9 @@
         transition: all 0.25s;
         padding: 16px;
         padding-left: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .drawer-item:hover {
         background-color: #272732;
@@ -40,7 +43,8 @@
         justify-content: center;
         align-items: center;
     }
-    .open,.open:hover {
+    .open,
+    .open:hover {
         background-color: #17181f;
     }
 </style>

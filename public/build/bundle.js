@@ -5978,12 +5978,12 @@ var app = (function () {
     			t0 = text("\r\n       \r\n    ");
     			div1 = element("div");
     			t1 = text(/*title*/ ctx[0]);
-    			attr_dev(div0, "class", "icon svelte-2u36eb");
+    			attr_dev(div0, "class", "icon svelte-16r7qa2");
     			set_style(div0, "background-color", /*color*/ ctx[1] == 'primary' ? '#fc76a1' : '#70c4bf');
     			add_location(div0, file$h, 8, 4, 255);
     			attr_dev(div1, "class", "title");
     			add_location(div1, file$h, 19, 4, 517);
-    			attr_dev(div2, "class", "drawer-item svelte-2u36eb");
+    			attr_dev(div2, "class", "drawer-item svelte-16r7qa2");
     			toggle_class(div2, "open", /*isOpen*/ ctx[2]);
     			add_location(div2, file$h, 7, 0, 195);
     		},

@@ -41,7 +41,7 @@
         addListModal.set(bind(CreateListModal));
 
     window.onload = () => {
-        setTimeout(() => AppLoaded.update(() => true), 500);
+        setTimeout(() => AppLoaded.update(() => true), 3500);
     };
 </script>
 

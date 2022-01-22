@@ -11764,7 +11764,7 @@ var app = (function () {
     			span = element("span");
     			t = text(t_value);
     			attr_dev(span, "class", "title-part");
-    			add_location(span, file$2, 45, 12, 1399);
+    			add_location(span, file$2, 45, 12, 1400);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -11801,11 +11801,11 @@ var app = (function () {
     			t = text("Loading...\r\n                ");
     			div0 = element("div");
     			attr_dev(div0, "class", "crossthrough svelte-inqfyx");
-    			add_location(div0, file$2, 129, 16, 4715);
+    			add_location(div0, file$2, 129, 16, 4716);
     			attr_dev(div1, "class", "loading-indicator svelte-inqfyx");
-    			add_location(div1, file$2, 127, 12, 4638);
+    			add_location(div1, file$2, 127, 12, 4639);
     			attr_dev(div2, "class", "loading-state svelte-inqfyx");
-    			add_location(div2, file$2, 126, 8, 4597);
+    			add_location(div2, file$2, 126, 8, 4598);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11958,70 +11958,70 @@ var app = (function () {
     			a5 = element("a");
     			a5.textContent = "Collection Tasks by Oliver Cederborg";
     			attr_dev(div0, "class", "tagline");
-    			add_location(div0, file$2, 50, 12, 1537);
-    			add_location(br0, file$2, 51, 12, 1609);
+    			add_location(div0, file$2, 50, 12, 1538);
+    			add_location(br0, file$2, 51, 12, 1610);
     			attr_dev(hr0, "color", "#21212b");
-    			add_location(hr0, file$2, 52, 12, 1629);
-    			add_location(br1, file$2, 54, 16, 1701);
-    			add_location(br2, file$2, 57, 16, 1873);
-    			add_location(br3, file$2, 58, 16, 1897);
+    			add_location(hr0, file$2, 52, 12, 1630);
+    			add_location(br1, file$2, 54, 16, 1702);
+    			add_location(br2, file$2, 57, 16, 1874);
+    			add_location(br3, file$2, 58, 16, 1898);
     			attr_dev(span0, "class", "highlight svelte-inqfyx");
-    			add_location(span0, file$2, 60, 16, 1947);
+    			add_location(span0, file$2, 60, 16, 1948);
     			attr_dev(span1, "class", "highlight svelte-inqfyx");
-    			add_location(span1, file$2, 64, 16, 2124);
+    			add_location(span1, file$2, 64, 16, 2125);
     			attr_dev(div1, "class", "body svelte-inqfyx");
-    			add_location(div1, file$2, 53, 12, 1665);
+    			add_location(div1, file$2, 53, 12, 1666);
     			attr_dev(hr1, "color", "#21212b");
-    			add_location(hr1, file$2, 67, 12, 2272);
-    			add_location(br4, file$2, 68, 12, 2308);
+    			add_location(hr1, file$2, 67, 12, 2273);
+    			add_location(br4, file$2, 68, 12, 2309);
     			attr_dev(a0, "href", "https://svelte.dev/");
     			attr_dev(a0, "target", "_blank");
     			attr_dev(a0, "class", "svelte-inqfyx");
-    			add_location(a0, file$2, 71, 32, 2420);
+    			add_location(a0, file$2, 71, 32, 2421);
     			attr_dev(a1, "href", "https://www.typescriptlang.org/");
     			attr_dev(a1, "target", "_blank");
     			attr_dev(a1, "class", "svelte-inqfyx");
-    			add_location(a1, file$2, 75, 20, 2571);
+    			add_location(a1, file$2, 75, 20, 2572);
     			attr_dev(div2, "class", "link");
-    			add_location(div2, file$2, 70, 16, 2368);
+    			add_location(div2, file$2, 70, 16, 2369);
     			attr_dev(a2, "href", "https://github.com/siddastic/svelte-todo");
     			attr_dev(a2, "target", "_blank");
     			attr_dev(a2, "class", "svelte-inqfyx");
-    			add_location(a2, file$2, 80, 34, 2787);
+    			add_location(a2, file$2, 80, 34, 2788);
     			attr_dev(div3, "class", "link");
-    			add_location(div3, file$2, 79, 16, 2733);
+    			add_location(div3, file$2, 79, 16, 2734);
     			attr_dev(div4, "class", "link-row svelte-inqfyx");
-    			add_location(div4, file$2, 69, 12, 2328);
-    			add_location(br5, file$2, 86, 12, 2994);
+    			add_location(div4, file$2, 69, 12, 2329);
+    			add_location(br5, file$2, 86, 12, 2995);
     			attr_dev(a3, "href", "https://github.com/siddastic");
     			attr_dev(a3, "target", "_blank");
     			attr_dev(a3, "class", "svelte-inqfyx");
-    			add_location(a3, file$2, 89, 33, 3107);
+    			add_location(a3, file$2, 89, 33, 3108);
     			attr_dev(div5, "class", "link");
-    			add_location(div5, file$2, 88, 16, 3054);
+    			add_location(div5, file$2, 88, 16, 3055);
     			attr_dev(a4, "href", "https://github.com/siddastic/svelte-todo#readme");
     			attr_dev(a4, "target", "_blank");
     			attr_dev(a4, "class", "svelte-inqfyx");
-    			add_location(a4, file$2, 95, 36, 3363);
+    			add_location(a4, file$2, 95, 36, 3364);
     			attr_dev(div6, "class", "link");
-    			add_location(div6, file$2, 94, 16, 3307);
+    			add_location(div6, file$2, 94, 16, 3308);
     			attr_dev(div7, "class", "link-row svelte-inqfyx");
-    			add_location(div7, file$2, 87, 12, 3014);
-    			add_location(br6, file$2, 101, 12, 3575);
+    			add_location(div7, file$2, 87, 12, 3015);
+    			add_location(br6, file$2, 101, 12, 3576);
     			attr_dev(span2, "class", "highlight svelte-inqfyx");
-    			add_location(span2, file$2, 104, 31, 3686);
+    			add_location(span2, file$2, 104, 31, 3687);
     			attr_dev(div8, "class", "link");
-    			add_location(div8, file$2, 103, 16, 3635);
+    			add_location(div8, file$2, 103, 16, 3636);
     			attr_dev(a5, "href", "https://dribbble.com/shots/15185058-Collection-Tasks");
     			attr_dev(a5, "target", "_blank");
     			attr_dev(a5, "class", "svelte-inqfyx");
-    			add_location(a5, file$2, 118, 37, 4323);
+    			add_location(a5, file$2, 118, 37, 4324);
     			attr_dev(div9, "class", "link");
-    			add_location(div9, file$2, 117, 16, 4266);
+    			add_location(div9, file$2, 117, 16, 4267);
     			attr_dev(div10, "class", "link-row svelte-inqfyx");
-    			add_location(div10, file$2, 102, 12, 3595);
+    			add_location(div10, file$2, 102, 12, 3596);
     			attr_dev(div11, "class", "loaded-content");
-    			add_location(div11, file$2, 49, 8, 1495);
+    			add_location(div11, file$2, 49, 8, 1496);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div11, anchor);
@@ -12143,9 +12143,9 @@ var app = (function () {
     			t = space();
     			if_block.c();
     			attr_dev(div0, "class", "title svelte-inqfyx");
-    			add_location(div0, file$2, 43, 4, 1303);
+    			add_location(div0, file$2, 43, 4, 1304);
     			attr_dev(div1, "class", "main svelte-inqfyx");
-    			add_location(div1, file$2, 42, 0, 1269);
+    			add_location(div1, file$2, 42, 0, 1270);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12265,7 +12265,7 @@ var app = (function () {
     	addListModal.set(bind(Create_list_modal));
 
     	window.onload = () => {
-    		setTimeout(() => AppLoaded.update(() => true), 500);
+    		setTimeout(() => AppLoaded.update(() => true), 3500);
     	};
 
     	const writable_props = [];
